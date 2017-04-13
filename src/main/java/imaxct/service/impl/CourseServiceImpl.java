@@ -4,6 +4,7 @@ import imaxct.dao.ICourseDao;
 import imaxct.domain.Course;
 import imaxct.service.ICourseService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
  * Created by maxct on 2017/4/9.
  */
 @Service
+@Transactional
 public class CourseServiceImpl implements ICourseService {
 
     @Resource

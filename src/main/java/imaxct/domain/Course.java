@@ -9,12 +9,10 @@ import javax.persistence.Table;
  * Created by maxct on 2017/4/9.
  */
 @Entity
-@Table
 public class Course {
 
-    public Course(){}
-
     @Id
+    @Column(length = 50)
     private String cid;
 
     @Column(length = 50)

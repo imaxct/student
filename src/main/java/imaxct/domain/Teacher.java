@@ -6,12 +6,12 @@ import javax.persistence.*;
  * Created by maxct on 2017/4/9.
  */
 @Entity
-@Table
 public class Teacher {
 
     public Teacher(){}
 
     @Id
+    @Column(length = 30)
     private String tid;
 
     @Column(length = 10)

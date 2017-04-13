@@ -8,7 +8,6 @@ import javax.persistence.Table;
  * Created by maxct on 2017/4/9.
  */
 @Entity
-@Table
 public class TeacherCourse {
 
     public TeacherCourse(){}

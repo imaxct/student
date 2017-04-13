@@ -7,12 +7,12 @@ import java.util.Date;
  * Created by maxct on 2017/4/9.
  */
 @Entity
-@Table(name = "student")
 public class Student {
 
     public Student(){}
 
     @Id
+    @Column(length = 20)
     private String sid;
 
     @Column(length = 20)

@@ -6,6 +6,7 @@ import imaxct.domain.Student;
 import imaxct.domain.StudentCourse;
 import imaxct.service.IStudentCourseService;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.List;
  * Created by maxct on 2017/4/9.
  */
 @Service
+@Transactional
 public class StudentCourseServiceImpl implements IStudentCourseService {
 
     @Resource
