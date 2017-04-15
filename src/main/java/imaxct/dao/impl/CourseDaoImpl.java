@@ -24,14 +24,17 @@ public class CourseDaoImpl extends BaseDao<Course> implements ICourseDao {
         return this.update(course);
     }
 
-    public List getCourseByName(final String name) {
+    public List<Course> getCourseByName(final String name) {
         return this.execute("from Course where name=?", name);
     }
 
-    public List getAllCourses() {
-        return this.execute("from Course");
+    public List<Course> getAllCourses() {
+        return this.listPage(0, 20, "from Course order by id desc");
     }
 
+    public List<Course> getFromId(int id){
+        return this.listPage(0, 20, "from Course where id<? order by id desc", id);
+    }
     public Course getById(int id) {
         return this.find(Course.class, id);
     }

@@ -15,4 +15,6 @@ public interface ITeacherService {
     Msg addCourse(Course course);
 
     Msg rateStudentCourse(StudentCourse studentCourse, double score);
+
+    Msg<List<StudentCourse>> getScore(Teacher teacher, Course course);
 }

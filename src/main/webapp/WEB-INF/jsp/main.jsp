@@ -23,21 +23,40 @@
     <![endif]-->
 </head>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
-
+            <ul class="list-group">
+                <li class="list-group-header">课程</li>
+                <li class="list-group-item"><a href="#" id="courseDeclare">选课公告</a></li>
+                <li class="list-group-item"><a href="#" id="courseChoose">选课</a></li>
+                <li class="list-group-item"><a href="#" id="courseSchedule">本学期课表</a></li>
+                <li class="list-group-header">成绩</li>
+                <li class="list-group-item"><a href="#" id="scoreTerm">本学期成绩</a></li>
+                <li class="list-group-item"><a href="#" id="scoreAll">所有成绩</a></li>
+            </ul>
         </div>
         <div class="col-md-9">
-            <div class="embed-responsive">
-                <iframe class="embed-responsive-item" src="" id="frame">
-
-                </iframe>
+            <div id="frame">
             </div>
         </div>
     </div>
 </div>
 <script src="/student/static/js/jquery-3.2.1.min.js"></script>
 <script src="/student/static/js/bootstrap.min.js"></script>
+<script>
+    $(document)
+        .on('click', '#courseDeclare', function () {
+            $('#frame').load('/student/static/declare.html');
+        })
+        .on('click', '#courseChoose', function () {
+            $('#frame').load('/student/C/list');
+        })
+        .on('click', '.list-group-item', function (event) {
+            var e = event.currentTarget;
+            $($(e).parent().children()).removeClass('active');
+            $(e).addClass('active');
+        });
+</script>
 </body>
 </html>

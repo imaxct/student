@@ -39,4 +39,9 @@ public class TeacherServiceImpl extends BaseService implements ITeacherService {
             return new Msg("更新失败");
         }
     }
+
+    public Msg<List<StudentCourse>> getScore(Teacher teacher, Course course) {
+        List<StudentCourse> list = this.studentCourseDao.getStudentByCourse(course);
+        return new Msg<List<StudentCourse>>(0, "ok", list);
+    }
 }

@@ -37,11 +37,11 @@
                     <form action="User/login" method="post">
                         <div class="form-group">
                             <label for="username">用户名</label>
-                            <input class="form-control" id="username" placeholder="用户名" type="text" required>
+                            <input class="form-control" name="username" id="username" placeholder="用户名" type="text" required>
                         </div>
                         <div class="form-group">
                             <label for="password">密码</label>
-                            <input class="form-control" id="password" placeholder="密码" type="password" required>
+                            <input class="form-control" name="password" id="password" placeholder="密码" type="password" required>
                         </div>
                         <button class="btn btn-primary btn-lg btn-block">登陆</button>
                         <input type="reset" class="btn btn-default btn-lg btn-block" value="清空">

@@ -25,7 +25,7 @@ public class StudentServiceImpl extends BaseService implements IStudentService {
     public Msg addCourse(Student student, Course course) {
         StudentCoursePK pk = new StudentCoursePK(student, course);
         StudentCourse sc ;
-        sc = this.studentCourseDao.getBySchedule(course.getDayOrder(), course.getCourseOrder());
+        sc = this.studentCourseDao.getBySchedule(student, course.getDayOrder(), course.getCourseOrder());
         if (sc != null){
             return new Msg("与 " + sc.getPk().getCid().getName() + " 冲突");
         }
@@ -49,10 +49,21 @@ public class StudentServiceImpl extends BaseService implements IStudentService {
     }
 
     public Msg deleteCourse(Student student, Course course) {
-        return null;
+        StudentCoursePK pk = new StudentCoursePK(student, course);
+        StudentCourse sc = this.studentCourseDao.getByPK(pk);
+        if (sc.getScore() != 0){
+            return new Msg("无法删除!");
+        }else {
+            if (this.studentCourseDao.deleteStudentCourse(sc)){
+                return new Msg(0, "删除成功");
+            }else {
+                return new Msg("删除失败, 请稍后再试.");
+            }
+        }
     }
 
     public Msg<List<StudentCourse>> getScore(Student student) {
-        return null;
+        List<StudentCourse> list = this.studentCourseDao.getCourseByStudent(student);
+        return new Msg<List<StudentCourse>>(0, "ok", list);
     }
 }

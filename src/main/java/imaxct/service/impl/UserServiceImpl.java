@@ -6,6 +6,8 @@ import imaxct.service.IUserService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 /**
  * Created by imaxct on 17-4-6.
  */
@@ -33,5 +35,9 @@ public class UserServiceImpl extends BaseService implements IUserService {
         }else if (user.getPassword().equals(password))
             return new Msg<User>(0, "ok", user);
         else return new Msg<User>("密码错误");
+    }
+
+    public Msg<List<User>> list() {
+        return new Msg<List<User>>(0, "ok", this.userDao.getAllUsers());
     }
 }

@@ -29,5 +29,5 @@ public interface IStudentCourseDao {
 
     StudentCourse getByPK(StudentCoursePK pk);
 
-    StudentCourse getBySchedule(int dayOrder, int courseOrder);
+    StudentCourse getBySchedule(Student student, int dayOrder, int courseOrder);
 }

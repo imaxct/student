@@ -4,6 +4,8 @@ import imaxct.dao.IUserDao;
 import imaxct.domain.User;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 
 /**
  * Created by imaxct on 17-4-6.
@@ -22,5 +24,9 @@ public class UserDaoImpl extends BaseDao<User> implements IUserDao {
 
     public User getUserByName(final String username) {
         return this.uniqueResult("from User where username=?", username);
+    }
+
+    public List<User> getAllUsers() {
+        return this.listPage(0, 500, "from User");
     }
 }

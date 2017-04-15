@@ -27,15 +27,15 @@ public class StudentCourseDaoImpl extends BaseDao<StudentCourse> implements IStu
         return this.update(studentCourse);
     }
 
-    public List getCourseByStudent(final Student student) {
+    public List<StudentCourse> getCourseByStudent(final Student student) {
         return this.execute("from StudentCourse where pk.sid=?", student);
     }
 
-    public List getStudentByCourse(final Course course) {
+    public List<StudentCourse> getStudentByCourse(final Course course) {
         return this.execute("from StudentCourse where pk.cid=?", course);
     }
 
-    public List getAllStudentCourse() {
+    public List<StudentCourse> getAllStudentCourse() {
         return this.execute("from StudentCourse");
     }
 
@@ -50,5 +50,10 @@ public class StudentCourseDaoImpl extends BaseDao<StudentCourse> implements IStu
 
     public StudentCourse getByPK(StudentCoursePK pk) {
         return this.find(StudentCourse.class, pk);
+    }
+
+    public StudentCourse getBySchedule(Student student, int dayOrder, int courseOrder) {
+        return this.uniqueResult("from StudentCourse where pk.sid=? and pk.cid.dayOrder=? and pk.cid.courseOrder=?",
+                student, dayOrder, courseOrder);
     }
 }

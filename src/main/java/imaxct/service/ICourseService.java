@@ -12,7 +12,10 @@ public interface ICourseService {
 
     boolean deleteCourse(Course course);
 
-    List getAllCourses();
+    /**
+     * id : -1 all
+     * */
+    List<Course> getAllCourses(int id);
 
-    List getCourseByName(String name);
+    List<Course> getCourseByName(String name);
 }

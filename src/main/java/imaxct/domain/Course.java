@@ -12,11 +12,10 @@ public class Course {
     @GeneratedValue
     private int id;
 
-
     @Column(length = 50)
     private String cid;
 
-    @Column(length = 50)
+    @Column(length = 80)
     private String name;
 
     @Column(columnDefinition = "NUMERIC(5,1)")
@@ -25,6 +24,8 @@ public class Course {
     @Column(length = 20)
     private String term;
 
+    @Column(length = 80)
+    private String location;
     /**
      * 课程属性
      * */
@@ -42,6 +43,12 @@ public class Course {
 
     private int capacity = 0;
 
+    @Column(length = 30)
+    private String week;
+
+    @ManyToOne
+    private Teacher teacher;
+
     public int getTotal() {
         return total;
     }
@@ -58,9 +65,6 @@ public class Course {
         this.capacity = capacity;
     }
 
-    @ManyToOne
-    private Teacher teacher;
-
     public int getId() {
         return id;
     }
@@ -69,8 +73,6 @@ public class Course {
         this.id = id;
     }
 
-    @Column(length = 30)
-    private String week;
 
     public String getTerm() {
         return term;
