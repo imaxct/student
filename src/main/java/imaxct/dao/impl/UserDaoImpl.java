@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
  * Created by imaxct on 17-4-6.
  */
 
-@Repository("userDao")
+@Repository
 public class UserDaoImpl extends BaseDao<User> implements IUserDao {
 
     public boolean createUser(User user) {

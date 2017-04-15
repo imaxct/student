@@ -13,16 +13,17 @@
 
     <context:component-scan base-package="imaxct.controller"/>
 
-<!--
     <context:component-scan base-package="imaxct.controller">
         <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
         <context:include-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
--->
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <mvc:resources mapping="/static/**" location="/static/"/>
+    <mvc:resources mapping="/*.html" location="/"/>
 </beans>

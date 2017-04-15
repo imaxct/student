@@ -1,10 +1,7 @@
 package imaxct.service.impl;
 
-import imaxct.dao.ITeacherCourseDao;
 import imaxct.domain.Course;
 import imaxct.domain.Teacher;
-import imaxct.domain.TeacherCourse;
-import imaxct.service.ITeacherCourseService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,9 +1,7 @@
 package imaxct.dao.impl;
 
-import imaxct.dao.ITeacherCourseDao;
 import imaxct.domain.Course;
 import imaxct.domain.Teacher;
-import imaxct.domain.TeacherCourse;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
