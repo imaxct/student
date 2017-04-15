@@ -17,5 +17,6 @@ public interface ICourseDao {
     List getCourseByName(String name);
 
     List getAllCourses();
-    
+
+    Course getById(int id);
 }

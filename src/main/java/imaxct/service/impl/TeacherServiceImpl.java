@@ -29,6 +29,9 @@ public class TeacherServiceImpl extends BaseService implements ITeacherService {
     }
 
     public Msg rateStudentCourse(StudentCourse studentCourse, double score) {
+        if (studentCourse.getScore() != 0){
+            return new Msg("成绩无法更改");
+        }
         studentCourse.setScore(score);
         if (this.studentCourseDao.updateStudentCourse(studentCourse)){
             return new Msg(0, "更新成功");

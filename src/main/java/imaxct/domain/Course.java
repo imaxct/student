@@ -1,9 +1,6 @@
 package imaxct.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 /**
  * Created by maxct on 2017/4/9.
@@ -12,6 +9,10 @@ import javax.persistence.ManyToOne;
 public class Course {
 
     @Id
+    @GeneratedValue
+    private int id;
+
+
     @Column(length = 50)
     private String cid;
 
@@ -20,6 +21,9 @@ public class Course {
 
     @Column(columnDefinition = "NUMERIC(5,1)")
     private double credit;
+
+    @Column(length = 20)
+    private String term;
 
     /**
      * 课程属性
@@ -34,11 +38,47 @@ public class Course {
 
     private int courseOrder;
 
+    private int total = 0;
+
+    private int capacity = 0;
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
     @ManyToOne
     private Teacher teacher;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     @Column(length = 30)
     private String week;
+
+    public String getTerm() {
+        return term;
+    }
+
+    public void setTerm(String term) {
+        this.term = term;
+    }
 
     public String getProperty() {
         return property;

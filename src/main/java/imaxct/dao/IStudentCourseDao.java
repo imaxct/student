@@ -3,6 +3,7 @@ package imaxct.dao;
 import imaxct.domain.Course;
 import imaxct.domain.Student;
 import imaxct.domain.StudentCourse;
+import imaxct.domain.StudentCoursePK;
 
 import java.util.List;
 
@@ -16,9 +17,17 @@ public interface IStudentCourseDao {
 
     boolean updateStudentCourse(StudentCourse studentCourse);
 
-    List getCourseByStudent(Student student);
+    List<StudentCourse> getCourseByStudent(Student student);
 
-    List getStudentByCourse(Course course);
+    List<StudentCourse> getStudentByCourse(Course course);
 
-    List getAllStudentCourse();
+    List<StudentCourse> getAllStudentCourse();
+
+    List<StudentCourse> getCurTermCourse(Student student);
+
+    StudentCourse getByPK(Student student, Course course);
+
+    StudentCourse getByPK(StudentCoursePK pk);
+
+    StudentCourse getBySchedule(int dayOrder, int courseOrder);
 }

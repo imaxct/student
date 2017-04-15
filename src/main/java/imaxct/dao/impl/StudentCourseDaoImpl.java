@@ -4,6 +4,7 @@ import imaxct.dao.IStudentCourseDao;
 import imaxct.domain.Course;
 import imaxct.domain.Student;
 import imaxct.domain.StudentCourse;
+import imaxct.domain.StudentCoursePK;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -27,14 +28,27 @@ public class StudentCourseDaoImpl extends BaseDao<StudentCourse> implements IStu
     }
 
     public List getCourseByStudent(final Student student) {
-        return this.execute("from StudentCourse where sid=?", student);
+        return this.execute("from StudentCourse where pk.sid=?", student);
     }
 
     public List getStudentByCourse(final Course course) {
-        return this.execute("from StudentCourse where cid=?", course);
+        return this.execute("from StudentCourse where pk.cid=?", course);
     }
 
     public List getAllStudentCourse() {
         return this.execute("from StudentCourse");
+    }
+
+    public List<StudentCourse> getCurTermCourse(Student student) {
+        return this.execute("from StudentCourse where pk.sid=? and score=0", student);
+    }
+
+    public StudentCourse getByPK(Student student, Course course) {
+        final StudentCoursePK pk = new StudentCoursePK(student, course);
+        return this.uniqueResult("from StudentCourse where pk=?", pk);
+    }
+
+    public StudentCourse getByPK(StudentCoursePK pk) {
+        return this.find(StudentCourse.class, pk);
     }
 }

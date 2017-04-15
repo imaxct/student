@@ -31,4 +31,8 @@ public class CourseDaoImpl extends BaseDao<Course> implements ICourseDao {
     public List getAllCourses() {
         return this.execute("from Course");
     }
+
+    public Course getById(int id) {
+        return this.find(Course.class, id);
+    }
 }
