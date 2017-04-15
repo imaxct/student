@@ -17,7 +17,7 @@
     function go() {
         window.location.href='/student';
     }
-    setTimeout(go, 200);
+    setTimeout(go, 2000);
 </script>
 </body>
 </html>

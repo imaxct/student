@@ -13,7 +13,7 @@ import java.util.List;
  * Created by maxct on 2017/4/9.
  */
 @Service
-@Transactional
+@Transactional(rollbackFor = Exception.class)
 public class CourseServiceImpl implements ICourseService {
 
     @Resource
