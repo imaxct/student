@@ -28,4 +28,12 @@ public class StudentDaoImpl extends BaseDao<Student> implements IStudentDao{
     public List getStudentByClass(final String clazz) {
         return this.execute("from Student where clazz=?", clazz);
     }
+
+    public Student getById(int id) {
+        return this.find(Student.class, id);
+    }
+
+    public Student getBySid(String sid) {
+        return this.uniqueResult("from Student where sid=?", sid);
+    }
 }

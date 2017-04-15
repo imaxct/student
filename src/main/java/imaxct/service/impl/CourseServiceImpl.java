@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Service
 @Transactional(rollbackFor = Exception.class)
-public class CourseServiceImpl implements ICourseService {
+public class CourseServiceImpl extends BaseService implements ICourseService {
 
     @Resource
     private ICourseDao courseDao;

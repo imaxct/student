@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class StudentCourseServiceImpl implements IStudentCourseService {
+public class StudentCourseServiceImpl extends BaseService implements IStudentCourseService {
 
     @Resource
     private IStudentCourseDao studentCourseDao;

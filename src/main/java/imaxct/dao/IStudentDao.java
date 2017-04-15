@@ -17,4 +17,8 @@ public interface IStudentDao {
     List getStudentByDepartment(Department department);
 
     List getStudentByClass(String clazz);
+
+    Student getById(int id);
+
+    Student getBySid(String sid);
 }

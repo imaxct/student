@@ -11,6 +11,9 @@ public class Teacher {
     public Teacher(){}
 
     @Id
+    @GeneratedValue
+    private int id;
+
     @Column(length = 30)
     private String tid;
 
@@ -24,6 +27,14 @@ public class Teacher {
     private Department dname;
 
     private int age;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getTid() {
         return tid;

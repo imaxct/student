@@ -12,6 +12,9 @@ public class Student {
     public Student(){}
 
     @Id
+    @GeneratedValue
+    private int id;
+
     @Column(length = 20)
     private String sid;
 
@@ -32,6 +35,14 @@ public class Student {
     @Column(columnDefinition = "DATE")
     @Temporal(TemporalType.DATE)
     private Date birthday;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getSid() {
         return sid;

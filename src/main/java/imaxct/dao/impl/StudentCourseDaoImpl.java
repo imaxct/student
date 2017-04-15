@@ -22,6 +22,10 @@ public class StudentCourseDaoImpl extends BaseDao<StudentCourse> implements IStu
         return this.delete(studentCourse);
     }
 
+    public boolean updateStudentCourse(StudentCourse studentCourse) {
+        return this.update(studentCourse);
+    }
+
     public List getCourseByStudent(final Student student) {
         return this.execute("from StudentCourse where sid=?", student);
     }

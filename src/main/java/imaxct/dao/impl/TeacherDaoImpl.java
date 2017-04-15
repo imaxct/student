@@ -29,8 +29,12 @@ public class TeacherDaoImpl extends BaseDao<Teacher> implements ITeacherDao {
         return this.execute("from Teacher where dname=?", department);
     }
 
-    public Teacher getTeacherById(final String tid) {
-        return this.find(Teacher.class, tid);
+    public Teacher getTeacherById(int id) {
+        return this.find(Teacher.class, id);
+    }
+
+    public Teacher getTeacherByTid(final String tid) {
+        return this.uniqueResult("from Teacher where tid=?", tid);
     }
 
     public Teacher getTeacherByName(final String name) {

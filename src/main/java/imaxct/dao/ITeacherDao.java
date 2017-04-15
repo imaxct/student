@@ -17,7 +17,9 @@ public interface ITeacherDao {
 
     List getTeacherByDepartment(Department department);
 
-    Teacher getTeacherById(String tid);
+    Teacher getTeacherById(int id);
+
+    Teacher getTeacherByTid(String tid);
 
     Teacher getTeacherByName(String name);
 }

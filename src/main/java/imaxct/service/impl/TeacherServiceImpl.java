@@ -1,7 +1,10 @@
 package imaxct.service.impl;
 
+import imaxct.bean.Msg;
 import imaxct.dao.ITeacherDao;
+import imaxct.domain.Course;
 import imaxct.domain.Department;
+import imaxct.domain.StudentCourse;
 import imaxct.domain.Teacher;
 import imaxct.service.ITeacherService;
 import org.springframework.stereotype.Service;
@@ -15,31 +18,22 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class TeacherServiceImpl implements ITeacherService {
+public class TeacherServiceImpl extends BaseService implements ITeacherService {
 
-    @Resource
-    private ITeacherDao teacherDao;
-    public boolean addTeacher(Teacher teacher) {
-        return teacherDao.addTeacher(teacher);
+    public Msg addCourse(Course course) {
+        if (this.courseDao.addCourse(course)){
+            return new Msg(0, "添加成功");
+        }else {
+            return new Msg("添加失败");
+        }
     }
 
-    public boolean deleteTeacher(Teacher teacher) {
-        return teacherDao.deleteTeacher(teacher);
-    }
-
-    public boolean updateTeacher(Teacher teacher) {
-        return teacherDao.updateTeacher(teacher);
-    }
-
-    public List getTeacherByDepartment(Department department) {
-        return teacherDao.getTeacherByDepartment(department);
-    }
-
-    public Teacher getTeacherById(String tid) {
-        return teacherDao.getTeacherById(tid);
-    }
-
-    public Teacher getTeacherByName(String name) {
-        return teacherDao.getTeacherByName(name);
+    public Msg rateStudentCourse(StudentCourse studentCourse, double score) {
+        studentCourse.setScore(score);
+        if (this.studentCourseDao.updateStudentCourse(studentCourse)){
+            return new Msg(0, "更新成功");
+        }else {
+            return new Msg("更新失败");
+        }
     }
 }

@@ -14,7 +14,7 @@ import java.util.List;
  */
 @Service
 @Transactional
-public class DepartmentServiceImpl implements IDepartmentService {
+public class DepartmentServiceImpl extends BaseService implements IDepartmentService {
 
     @Resource
     private IDepartmentDao departmentDao;

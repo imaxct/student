@@ -16,6 +16,26 @@ public class User {
 
     private String password;
 
+    private boolean stu = true;
+
+    private int pid;
+
+    public boolean isStu() {
+        return stu;
+    }
+
+    public void setStu(boolean stu) {
+        this.stu = stu;
+    }
+
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
     public String getPassword() {
         return password;
     }

@@ -14,6 +14,8 @@ public interface IStudentCourseDao {
 
     boolean deleteStudentCourse(StudentCourse studentCourse);
 
+    boolean updateStudentCourse(StudentCourse studentCourse);
+
     List getCourseByStudent(Student student);
 
     List getStudentByCourse(Course course);

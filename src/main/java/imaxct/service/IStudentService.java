@@ -1,6 +1,6 @@
 package imaxct.service;
 
-import imaxct.domain.Department;
+import imaxct.domain.Course;
 import imaxct.domain.Student;
 
 import java.util.List;
@@ -9,12 +9,11 @@ import java.util.List;
  * Created by maxct on 2017/4/9.
  */
 public interface IStudentService {
+    List<Course> getSchedule(Student student);
 
-    boolean addStudent(Student student);
+    boolean addCourse(Course course);
 
-    boolean deleteStudent(Student student);
+    boolean deleteCourse(Course course);
 
-    List getStudentByDepartment(Department department);
-
-    List getStudentByClass(String clazz);
+    List<Course> getScore(Student student);
 }

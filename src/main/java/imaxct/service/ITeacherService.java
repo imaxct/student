@@ -1,6 +1,9 @@
 package imaxct.service;
 
+import imaxct.bean.Msg;
+import imaxct.domain.Course;
 import imaxct.domain.Department;
+import imaxct.domain.StudentCourse;
 import imaxct.domain.Teacher;
 
 import java.util.List;
@@ -9,15 +12,7 @@ import java.util.List;
  * Created by maxct on 2017/4/9.
  */
 public interface ITeacherService {
-    boolean addTeacher(Teacher teacher);
+    Msg addCourse(Course course);
 
-    boolean deleteTeacher(Teacher teacher);
-
-    boolean updateTeacher(Teacher teacher);
-
-    List getTeacherByDepartment(Department department);
-
-    Teacher getTeacherById(String tid);
-
-    Teacher getTeacherByName(String name);
+    Msg rateStudentCourse(StudentCourse studentCourse, double score);
 }
