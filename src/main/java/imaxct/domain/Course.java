@@ -145,4 +145,12 @@ public class Course {
     public void setCredit(double credit) {
         this.credit = credit;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 }

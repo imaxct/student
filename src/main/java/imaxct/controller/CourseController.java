@@ -38,6 +38,9 @@ public class CourseController {
             nid = Integer.valueOf(id);
         }
         List<Course> list = courseService.getAllCourses(nid);
+        System.out.println("-------------");
+        System.out.println(list.size());
+        System.out.println("-------------");
         for (Course c : list){
             System.out.println(c.getCid() + "\t" + c.getName());
         }

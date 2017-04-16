@@ -23,6 +23,16 @@
     <![endif]-->
 </head>
 <body>
+<nav class="navbar navbar-masthead navbar-default">
+    <div class="container-fluid">
+        <p class="navbar-text navbar-right">
+            <a href="#" class="navbar-link">${user.username}</a>
+            <span>&nbsp;</span>
+            <a href="#" class="navbar-link">退出</a>
+            <span>&nbsp;</span>
+        </p>
+    </div>
+</nav>
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-3">
