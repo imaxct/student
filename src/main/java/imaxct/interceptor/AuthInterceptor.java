@@ -13,11 +13,12 @@ import javax.servlet.http.HttpSession;
 public class AuthInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o) throws Exception {
         HttpSession session = httpServletRequest.getSession();
-        if (session.getAttribute("user") == null){
-            httpServletResponse.sendRedirect("/");
+        if (session.getAttribute("user") == null && httpServletRequest.getAttribute("user") == null){
+            httpServletResponse.sendRedirect("/student/");
             return false;
+        }else {
+            return true;
         }
-        return true;
     }
 
     public void postHandle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Object o, ModelAndView modelAndView) throws Exception {

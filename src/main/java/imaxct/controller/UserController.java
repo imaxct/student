@@ -52,7 +52,7 @@ public class UserController {
             modelAndView.addObject("msg", "登陆失败");
         }else {
             modelAndView = new ModelAndView("redirect:main");
-            //modelAndView.addObject("user", msg.getObj());
+            modelAndView.addObject("user", msg.getObj());
             httpSession.setAttribute("user", msg.getObj());
         }
         return modelAndView;

@@ -26,4 +26,13 @@
 
     <mvc:resources mapping="/static/**" location="/static/"/>
     <mvc:resources mapping="/*.html" location="/"/>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/User/login"/>
+            <mvc:exclude-mapping path="/User/register"/>
+            <bean class="imaxct.interceptor.AuthInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
 </beans>
