@@ -14,11 +14,9 @@ public interface ICourseDao {
 
     boolean updateCourse(Course course);
 
-    List<Course> getCourseByName(String name);
-
     List<Course> getAllCourses();
 
-    Course getById(int id);
+    Course getCourseById(int id);
 
-    List<Course> getFromId(int id);
+    List<Course> getCourseFromId(int id);
 }

@@ -1,6 +1,7 @@
 package imaxct.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,7 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "STU_course")
-public class Course {
+public class Course implements Serializable{
 
     @Id
     @GeneratedValue

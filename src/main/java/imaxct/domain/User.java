@@ -1,13 +1,14 @@
 package imaxct.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by imaxct on 17-4-6.
  */
 @Entity
 @Table(name = "STU_user")
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
@@ -25,7 +26,7 @@ public class User {
     private String idNo;
 
     @Column(length = 10)
-    private String clazz;
+    private String grade;
 
     @Column(length = 40)
     private String campus;
@@ -79,12 +80,12 @@ public class User {
         this.idNo = idNo;
     }
 
-    public String getClazz() {
-        return clazz;
+    public String getGrade() {
+        return grade;
     }
 
-    public void setClazz(String clazz) {
-        this.clazz = clazz;
+    public void setGrade(String grade) {
+        this.grade = grade;
     }
 
     public String getCampus() {
