@@ -29,6 +29,7 @@ public class BaseDao<T> {
             session.persist(t);
             return true;
         } catch (Exception e) {
+            session.getTransaction().rollback();
             logger.error("create", e);
             return false;
         }

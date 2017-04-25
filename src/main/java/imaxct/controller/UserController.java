@@ -31,14 +31,8 @@ public class UserController {
         return new Gson().toJson(userService.list());
     }
 
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
-    public ModelAndView index(){
-        return new ModelAndView("index");
-    }
-
     @RequestMapping(value = "/main")
     public String main(){
-
         return "main";
     }
 

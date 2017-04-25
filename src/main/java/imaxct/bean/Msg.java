@@ -45,7 +45,7 @@ public class Msg<T> implements Serializable{
         this.msg = msg;
     }
 
-    public Object getObj() {
+    public T getObj() {
         return obj;
     }
 

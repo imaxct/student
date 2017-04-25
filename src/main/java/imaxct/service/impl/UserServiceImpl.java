@@ -3,6 +3,7 @@ package imaxct.service.impl;
 import imaxct.bean.Msg;
 import imaxct.domain.User;
 import imaxct.service.IUserService;
+import imaxct.util.Util;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -20,10 +21,19 @@ public class UserServiceImpl extends BaseService implements IUserService {
         if (user == null){
             return new Msg<User>("用户不存在");
         }else if (user.getIdNo().equals(password))
-            return new Msg<User>(0, "ok", user);
+            return new Msg<User>(0, null, user);
         else {
-            //TODO
-            return null;
+            Msg<User> msg = Util.verify(stuNo, password);
+            if (msg.getCode() == 0){
+                User nUser = msg.getObj();
+                if (this.userDao.createUser(nUser)){
+                    return new Msg<User>(1, null, nUser);
+                }else {
+                    return new Msg<User>("非首次登录, 请使用身份证号.");
+                }
+            }else {
+                return new Msg<User>("登录失败.");
+            }
         }
     }
 
