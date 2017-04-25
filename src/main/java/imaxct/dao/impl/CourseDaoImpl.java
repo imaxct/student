@@ -25,11 +25,13 @@ public class CourseDaoImpl extends BaseDao<Course> implements ICourseDao {
     }
 
     public List<Course> getAllCourses() {
-        return this.listPage(0, 20, "from Course order by id desc");
+        return this.listPage(0, 20,
+                "from Course where endDate > NOW() order by id desc");
     }
 
     public List<Course> getCourseFromId(int id){
-        return this.listPage(0, 20, "from Course where id<? order by id desc", id);
+        return this.listPage(0, 20,
+                "from Course where endDate > NOW() and id<? order by id desc", id);
     }
     public Course getCourseById(int id) {
         return this.find(Course.class, id);

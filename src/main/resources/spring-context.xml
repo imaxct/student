@@ -56,6 +56,7 @@
     <context:component-scan base-package="imaxct.domain"/>
     <context:component-scan base-package="imaxct.dao.impl"/>
     <context:component-scan base-package="imaxct.service.impl"/>
+    <context:component-scan base-package="imaxct.handler"/>
 
 
     <tx:annotation-driven transaction-manager="txManager"/>

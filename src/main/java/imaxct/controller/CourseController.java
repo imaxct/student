@@ -23,9 +23,7 @@ public class CourseController {
     @RequestMapping(value = "/test")
     public String test(){
         Course course = new Course();
-        course.setCid("1234");
         course.setName("name-1");
-        course.setCredit(5.5d);
         boolean flag = courseService.addCourse(course);
         return "" + flag;
     }
@@ -38,12 +36,6 @@ public class CourseController {
             nid = Integer.valueOf(id);
         }
         List<Course> list = courseService.getAllCourses(nid);
-        System.out.println("-------------");
-        System.out.println(list.size());
-        System.out.println("-------------");
-        for (Course c : list){
-            System.out.println(c.getCid() + "\t" + c.getName());
-        }
         modelAndView.addObject("list", list);
         return modelAndView;
     }

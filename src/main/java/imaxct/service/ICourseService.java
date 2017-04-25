@@ -17,5 +17,4 @@ public interface ICourseService {
      * */
     List<Course> getAllCourses(int id);
 
-    List<Course> getCourseByName(String name);
 }

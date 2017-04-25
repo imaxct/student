@@ -25,10 +25,7 @@ public class CourseServiceImpl extends BaseService implements ICourseService {
     public List<Course> getAllCourses(int id) {
         if (id == -1)
             return this.courseDao.getAllCourses();
-        return courseDao.getFromId(id);
+        return courseDao.getCourseFromId(id);
     }
 
-    public List<Course> getCourseByName(String name) {
-        return courseDao.getCourseByName(name);
-    }
 }
