@@ -23,29 +23,7 @@ public class StudentServiceImpl extends BaseService implements IStudentService {
     }
 
     public Msg addCourse(Student student, Course course) {
-        StudentCoursePK pk = new StudentCoursePK(student, course);
-        StudentCourse sc ;
-        sc = this.studentCourseDao.getBySchedule(student, course.getDayOrder(), course.getCourseOrder());
-        if (sc != null){
-            return new Msg("与 " + sc.getPk().getCid().getName() + " 冲突");
-        }
-        sc = this.studentCourseDao.getByPK(pk);
-        if (sc != null){
-            return new Msg("已经选过这门课了");
-        }
-        Course rc = this.courseDao.getById(course.getId());
-        if (rc.getTotal() < rc.getCapacity()){
-            rc.setTotal(rc.getTotal() + 1);
-            sc = new StudentCourse();
-            sc.setPk(pk);
-            if (this.studentCourseDao.addStudentCourse(sc)){
-                return new Msg(0, "选课成功");
-            }else {
-                return new Msg("选课失败, 系统忙.");
-            }
-        }else {
-            return new Msg("选课人数已满");
-        }
+        return null;
     }
 
     public Msg deleteCourse(Student student, Course course) {

@@ -9,7 +9,6 @@ import java.util.List;
  * Created by imaxct on 17-4-6.
  */
 public interface IUserService {
-    Msg register(String username, String password);
 
     Msg<User> login(String username, String password);
 

@@ -58,15 +58,4 @@ public class UserController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public ModelAndView register(String username, String password){
-        Msg msg = userService.register(username, password);
-        ModelAndView modelAndView = new ModelAndView("msg");
-        if (msg.getCode() == 0){
-            modelAndView.addObject("msg", "注册成功");
-        }else {
-            modelAndView.addObject("msg", "注册失败");
-        }
-        return modelAndView;
-    }
 }
