@@ -6,43 +6,38 @@ import javax.persistence.*;
  * Created by imaxct on 17-4-6.
  */
 @Entity
+@Table(name = "STU_user")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(unique = true)
-    private String username;
+    @Column(length = 20, unique = true)
+    private String stuNo;
 
-    private String password;
+    @Column(length = 5)
+    private String sex;
 
-    private boolean stu = true;
+    @Column(length = 20)
+    private String name;
 
-    private int pid;
+    @Column(length = 20)
+    private String idNo;
 
-    public boolean isStu() {
-        return stu;
-    }
+    @Column(length = 10)
+    private String clazz;
 
-    public void setStu(boolean stu) {
-        this.stu = stu;
-    }
+    @Column(length = 40)
+    private String campus;
 
-    public int getPid() {
-        return pid;
-    }
+    @Column(length = 20)
+    private String phone;
 
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
+    @Column(length = 20)
+    private String qq;
 
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
+    @Column(length = 50)
+    private String email;
 
     public int getId() {
         return id;
@@ -52,11 +47,75 @@ public class User {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getStuNo() {
+        return stuNo;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setStuNo(String stuNo) {
+        this.stuNo = stuNo;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getIdNo() {
+        return idNo;
+    }
+
+    public void setIdNo(String idNo) {
+        this.idNo = idNo;
+    }
+
+    public String getClazz() {
+        return clazz;
+    }
+
+    public void setClazz(String clazz) {
+        this.clazz = clazz;
+    }
+
+    public String getCampus() {
+        return campus;
+    }
+
+    public void setCampus(String campus) {
+        this.campus = campus;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>
-        登陆页 - 教务系统
+        登陆页 - 选课系统
     </title>
     <link href="static/css/bootstrap.min.css" rel="stylesheet">
     <link href="static/css/todc-bootstrap.min.css" rel="stylesheet">
@@ -36,12 +36,12 @@
                 <div class="panel-body">
                     <form action="User/login" method="post">
                         <div class="form-group">
-                            <label for="username">用户名</label>
-                            <input class="form-control" name="username" id="username" placeholder="用户名" type="text" required>
+                            <label for="stuNo">用户名</label>
+                            <input class="form-control" name="stuNo" id="stuNo" placeholder="学号" type="text" required>
                         </div>
                         <div class="form-group">
-                            <label for="password">密码</label>
-                            <input class="form-control" name="password" id="password" placeholder="密码" type="password" required>
+                            <label for="idNo">密码</label>
+                            <input class="form-control" name="idNo" id="idNo" placeholder="身份证/教务密码" type="text" required>
                         </div>
                         <button class="btn btn-primary btn-lg btn-block">登陆</button>
                         <input type="reset" class="btn btn-default btn-lg btn-block" value="清空">
@@ -52,7 +52,7 @@
         <div class="col-md-4"></div>
     </div>
 </div>
-<script src="static/js/jquery-3.2.1.min.js"></script>
-<script src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="static/js/bootstrap.min.js"></script>
 </body>
 </html>

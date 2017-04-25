@@ -22,8 +22,8 @@ public class UserDaoImpl extends BaseDao<User> implements IUserDao {
         return this.find(User.class, id);
     }
 
-    public User getUserByName(final String username) {
-        return this.uniqueResult("from User where username=?", username);
+    public User getUserByStuNo(String stuNo) {
+        return this.uniqueResult("from User where stuNo = ?", stuNo);
     }
 
     public List<User> getAllUsers() {

@@ -26,3 +26,8 @@
 </c:forEach>
     </tbody>
 </table>
+<script>
+    function choose(id) {
+
+    }
+</script>

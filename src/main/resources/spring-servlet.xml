@@ -29,7 +29,7 @@
 
     <mvc:interceptors>
         <mvc:interceptor>
-            <mvc:mapping path="/**"/>
+            <mvc:mapping path="/User/**"/>
             <mvc:exclude-mapping path="/User/login"/>
             <mvc:exclude-mapping path="/User/register"/>
             <bean class="imaxct.interceptor.AuthInterceptor"/>

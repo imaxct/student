@@ -10,6 +10,6 @@ import java.util.List;
 public interface IUserDao {
     boolean createUser(User user);
     User getUserById(int id);
-    User getUserByName(String username);
+    User getUserByStuNo(String stuNo);
     List<User> getAllUsers();
 }

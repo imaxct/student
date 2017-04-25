@@ -1,68 +1,50 @@
 package imaxct.domain;
 
 import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Created by maxct on 2017/4/9.
  */
 @Entity
+@Table(name = "STU_course")
 public class Course {
 
     @Id
     @GeneratedValue
     private int id;
 
-    @Column(length = 50)
-    private String cid;
-
-    @Column(length = 80)
+    @Column(length = 100)
     private String name;
 
-    @Column(columnDefinition = "NUMERIC(5,1)")
-    private double credit;
-
-    @Column(length = 20)
-    private String term;
-
-    @Column(length = 80)
-    private String location;
-    /**
-     * 课程属性
-     * */
-    @Column(length = 10)
-    private String property;
+    @Column(columnDefinition = "DATETIME")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date endDate;
 
     /**
-     * 1-7
+     * -1非贫困 0 无限制 1 贫困
      * */
-    private int dayOrder;
+    private int restrict = 0;
 
-    private int courseOrder;
-
-    private int total = 0;
+    @Column(length = 250)
+    private String description;
 
     private int capacity = 0;
 
-    @Column(length = 30)
-    private String week;
+    private int occupied = 0;
 
-    @ManyToOne
-    private Teacher teacher;
+    @Column(length = 10)
+    private String gradeLimit;
 
-    public int getTotal() {
-        return total;
+    @Column(length = 100)
+    private String location;
+
+    public String getLocation() {
+        return location;
     }
 
-    public void setTotal(int total) {
-        this.total = total;
-    }
-
-    public int getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(int capacity) {
-        this.capacity = capacity;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
     public int getId() {
@@ -73,63 +55,6 @@ public class Course {
         this.id = id;
     }
 
-
-    public String getTerm() {
-        return term;
-    }
-
-    public void setTerm(String term) {
-        this.term = term;
-    }
-
-    public String getProperty() {
-        return property;
-    }
-
-    public void setProperty(String property) {
-        this.property = property;
-    }
-
-    public int getDayOrder() {
-        return dayOrder;
-    }
-
-    public void setDayOrder(int dayOrder) {
-        this.dayOrder = dayOrder;
-    }
-
-    public int getCourseOrder() {
-        return courseOrder;
-    }
-
-    public void setCourseOrder(int courseOrder) {
-        this.courseOrder = courseOrder;
-    }
-
-    public Teacher getTeacher() {
-        return teacher;
-    }
-
-    public void setTeacher(Teacher teacher) {
-        this.teacher = teacher;
-    }
-
-    public String getWeek() {
-        return week;
-    }
-
-    public void setWeek(String week) {
-        this.week = week;
-    }
-
-    public String getCid() {
-        return cid;
-    }
-
-    public void setCid(String cid) {
-        this.cid = cid;
-    }
-
     public String getName() {
         return name;
     }
@@ -138,19 +63,51 @@ public class Course {
         this.name = name;
     }
 
-    public double getCredit() {
-        return credit;
+    public Date getEndDate() {
+        return endDate;
     }
 
-    public void setCredit(double credit) {
-        this.credit = credit;
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
-    public String getLocation() {
-        return location;
+    public int getRestrict() {
+        return restrict;
     }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setRestrict(int restrict) {
+        this.restrict = restrict;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public int getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
+    }
+
+    public int getOccupied() {
+        return occupied;
+    }
+
+    public void setOccupied(int occupied) {
+        this.occupied = occupied;
+    }
+
+    public String getGradeLimit() {
+        return gradeLimit;
+    }
+
+    public void setGradeLimit(String gradeLimit) {
+        this.gradeLimit = gradeLimit;
     }
 }
