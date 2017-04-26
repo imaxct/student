@@ -6,10 +6,6 @@
 # User-specific stuff:
 .idea/**/workspace.xml
 
-
-# Gradle:
-.idea/**/libraries
-
 ## Plugin-specific files:
 
 # IntelliJ
