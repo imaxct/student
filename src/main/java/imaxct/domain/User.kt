@@ -3,9 +3,6 @@ package imaxct.domain
 import javax.persistence.*
 import java.io.Serializable
 
-/**
- * Created by imaxct on 17-4-6.
- */
 @Entity
 @Table(name = "STU_user")
 class User : Serializable {

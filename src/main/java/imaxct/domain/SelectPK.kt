@@ -3,10 +3,6 @@ package imaxct.domain
 import javax.persistence.Embeddable
 import javax.persistence.ManyToOne
 
-/**
- * Created by imaxct on 17-4-25.
- * student
- */
 @Embeddable
 class SelectPK {
 

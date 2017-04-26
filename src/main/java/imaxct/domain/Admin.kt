@@ -3,10 +3,7 @@ package imaxct.domain
 import javax.persistence.*
 import java.io.Serializable
 
-/**
- * Created by imaxct on 17-4-25.
- * student
- */
+
 @Entity
 @Table(name = "STU_admin")
 class Admin : Serializable {

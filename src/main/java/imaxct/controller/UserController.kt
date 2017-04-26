@@ -1,6 +1,7 @@
 package imaxct.controller
 
 import com.google.gson.Gson
+import imaxct.domain.User
 import imaxct.service.IUserService
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
@@ -22,15 +23,15 @@ class UserController {
     @Resource
     private val userService: IUserService? = null
 
-    @ResponseBody
-    @RequestMapping("/test")
-    fun test(): String {
-        return Gson().toJson(userService!!.list())
-    }
 
     @RequestMapping(value = "/main")
     fun main(): String {
         return "main"
+    }
+
+    @RequestMapping(value = "/fillInfo", method = arrayOf(RequestMethod.GET))
+    fun completeInfo(user: User): String {
+        return "fillInfo"
     }
 
     @RequestMapping(value = "/login", method = arrayOf(RequestMethod.POST))
@@ -38,7 +39,7 @@ class UserController {
         val msg = userService!!.login(username, password)
         println(msg)
         val modelAndView: ModelAndView
-        if (msg.code != 0) {
+        if (msg.code !=0 && msg.code != 1) {
             modelAndView = ModelAndView("msg")
             modelAndView.addObject("msg", "登陆失败")
         } else {

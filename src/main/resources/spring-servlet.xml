@@ -37,5 +37,9 @@
             <mvc:exclude-mapping path="/User/register"/>
             <bean class="imaxct.interceptor.AuthInterceptor"/>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/C/**"/>
+            <bean class="imaxct.interceptor.InfoInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>

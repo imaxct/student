@@ -7,9 +7,6 @@ import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 import javax.servlet.http.HttpSession
 
-/**
- * Created by maxct on 2017/4/16.
- */
 class AuthInterceptor : HandlerInterceptor {
     @Throws(Exception::class)
     override fun preHandle(httpServletRequest: HttpServletRequest,

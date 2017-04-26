@@ -4,9 +4,6 @@ import javax.persistence.*
 import java.io.Serializable
 import java.util.Date
 
-/**
- * Created by maxct on 2017/4/9.
- */
 @Entity
 @Table(name = "STU_course")
 class Course : Serializable {
@@ -21,6 +18,12 @@ class Course : Serializable {
     @Column(columnDefinition = "DATETIME")
     @Temporal(TemporalType.TIMESTAMP)
     var endDate: Date? = null
+
+    /**
+     * 上课时间
+     * */
+    @Column(length = 200)
+    var courseTime: String? = null
 
     /**
      * -1非贫困 0 无限制 1 贫困
