@@ -19,7 +19,7 @@ import java.util.List;
 public class StudentServiceImpl extends BaseService implements IStudentService {
 
     public Msg<List<StudentCourse>> getSchedule(Student student) {
-        return new Msg<List<StudentCourse>>(0, "ok", this.studentCourseDao.getCurTermCourse(student));
+        return new Msg<List<StudentCourse>>(0, "ok", this.getStudentCourseDao().getCurTermCourse(student));
     }
 
     public Msg addCourse(Student student, Course course) {
@@ -28,11 +28,11 @@ public class StudentServiceImpl extends BaseService implements IStudentService {
 
     public Msg deleteCourse(Student student, Course course) {
         StudentCoursePK pk = new StudentCoursePK(student, course);
-        StudentCourse sc = this.studentCourseDao.getByPK(pk);
+        StudentCourse sc = this.getStudentCourseDao().getByPK(pk);
         if (sc.getScore() != 0){
             return new Msg("无法删除!");
         }else {
-            if (this.studentCourseDao.deleteStudentCourse(sc)){
+            if (this.getStudentCourseDao().deleteStudentCourse(sc)){
                 return new Msg(0, "删除成功");
             }else {
                 return new Msg("删除失败, 请稍后再试.");
@@ -41,7 +41,7 @@ public class StudentServiceImpl extends BaseService implements IStudentService {
     }
 
     public Msg<List<StudentCourse>> getScore(Student student) {
-        List<StudentCourse> list = this.studentCourseDao.getCourseByStudent(student);
+        List<StudentCourse> list = this.getStudentCourseDao().getCourseByStudent(student);
         return new Msg<List<StudentCourse>>(0, "ok", list);
     }
 }

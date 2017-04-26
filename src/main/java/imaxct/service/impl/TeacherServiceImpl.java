@@ -21,7 +21,7 @@ import java.util.List;
 public class TeacherServiceImpl extends BaseService implements ITeacherService {
 
     public Msg addCourse(Course course) {
-        if (this.courseDao.addCourse(course)){
+        if (this.getCourseDao().addCourse(course)){
             return new Msg(0, "添加成功");
         }else {
             return new Msg("添加失败");
@@ -33,7 +33,7 @@ public class TeacherServiceImpl extends BaseService implements ITeacherService {
             return new Msg("成绩无法更改");
         }
         studentCourse.setScore(score);
-        if (this.studentCourseDao.updateStudentCourse(studentCourse)){
+        if (this.getStudentCourseDao().updateStudentCourse(studentCourse)){
             return new Msg(0, "更新成功");
         }else {
             return new Msg("更新失败");
@@ -41,7 +41,7 @@ public class TeacherServiceImpl extends BaseService implements ITeacherService {
     }
 
     public Msg<List<StudentCourse>> getScore(Teacher teacher, Course course) {
-        List<StudentCourse> list = this.studentCourseDao.getStudentByCourse(course);
+        List<StudentCourse> list = this.getStudentCourseDao().getStudentByCourse(course);
         return new Msg<List<StudentCourse>>(0, "ok", list);
     }
 }
