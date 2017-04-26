@@ -53,7 +53,7 @@ object Util {
                         user.idNo = idNo
                         user.grade = grade
                         user.phone = phone
-                        return Msg(0, "ok", user)
+                        return Msg(0, user)
                     }
                 }
                 return Msg("fail")
