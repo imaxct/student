@@ -36,4 +36,6 @@ class User : Serializable {
 
     @Column(length = 50)
     var email: String? = null
+
+    var poor: Boolean = false
 }

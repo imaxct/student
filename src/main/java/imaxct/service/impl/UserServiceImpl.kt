@@ -8,9 +8,6 @@ import imaxct.util.Util
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
-/**
- * Created by imaxct on 17-4-6.
- */
 @Service
 @Transactional
 open class UserServiceImpl : BaseService(), IUserService {

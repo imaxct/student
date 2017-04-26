@@ -9,9 +9,6 @@ import org.springframework.web.servlet.ModelAndView
 
 import javax.annotation.Resource
 
-/**
- * Created by maxct on 2017/4/9.
- */
 @Controller
 @RequestMapping("/C")
 class CourseController {

@@ -1,20 +1,15 @@
 package imaxct.controller
 
-import com.google.gson.Gson
 import imaxct.domain.User
 import imaxct.service.IUserService
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.SessionAttributes
 import org.springframework.web.servlet.ModelAndView
 import javax.annotation.Resource
 import javax.servlet.http.HttpSession
 
-/**
- * Created by imaxct on 17-4-6.
- */
 @Controller
 @RequestMapping(value = "/User")
 @SessionAttributes("user")

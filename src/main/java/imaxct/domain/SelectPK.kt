@@ -1,10 +1,11 @@
 package imaxct.domain
 
+import java.io.Serializable
 import javax.persistence.Embeddable
 import javax.persistence.ManyToOne
 
 @Embeddable
-class SelectPK {
+class SelectPK : Serializable{
 
     constructor(){}
 
