@@ -13,17 +13,5 @@ open class BaseService {
     protected var courseDao: ICourseDao? = null
 
     @Resource
-    protected var departmentDao: IDepartmentDao? = null
-
-    @Resource
-    protected var studentCourseDao: IStudentCourseDao? = null
-
-    @Resource
-    protected var studentDao: IStudentDao? = null
-
-    @Resource
-    protected var teacherDao: ITeacherDao? = null
-
-    @Resource
     protected var userDao: IUserDao? = null
 }

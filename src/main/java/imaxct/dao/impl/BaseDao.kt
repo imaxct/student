@@ -9,17 +9,12 @@ import org.hibernate.query.Query
 import javax.annotation.Resource
 import java.io.Serializable
 
-/**
- * Created by imaxct on 17-4-10.
- */
 open class BaseDao<T> {
 
     @Resource(name = "sessionFactory")
     private val sessionFactory: SessionFactory? = null
 
-    protected fun currentSession(): Session {
-        return sessionFactory!!.currentSession
-    }
+    protected fun currentSession(): Session = sessionFactory!!.currentSession
 
     fun create(t: T): Boolean {
         val session = currentSession()

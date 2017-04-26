@@ -1,5 +1,6 @@
 package imaxct.service.impl
 
+import imaxct.bean.Msg
 import imaxct.domain.Course
 import imaxct.service.ICourseService
 import org.springframework.stereotype.Service
@@ -12,18 +13,22 @@ import org.springframework.transaction.annotation.Transactional
 @Transactional
 open class CourseServiceImpl : BaseService(), ICourseService {
 
-    override fun addCourse(course: Course): Boolean {
-        return courseDao!!.addCourse(course)
+    override fun addCourse(course: Course): Msg<*> {
+        if (courseDao!!.addCourse(course))
+            return Msg<Int>(0, "ok")
+        return Msg<Int>("添加失败.")
     }
 
-    override fun deleteCourse(course: Course): Boolean {
-        return courseDao!!.deleteCourse(course)
+    override fun deleteCourse(course: Course): Msg<*> {
+        if (courseDao!!.deleteCourse(course))
+            return Msg(0, "ok", null)
+        return Msg(-1, "删除失败.", null)
     }
 
-    override fun getAllCourses(id: Int): List<Course> {
+    override fun getAllCourses(id: Int): Msg<List<Course>> {
         if (id == -1)
-            return this.courseDao!!.allCourses
-        return courseDao!!.getCourseFromId(id)
+            return Msg(0, "ok", this.courseDao!!.getAllCourses())
+        return Msg(0, "ok", this.courseDao!!.getCourseFromId(id))
     }
 
 }
