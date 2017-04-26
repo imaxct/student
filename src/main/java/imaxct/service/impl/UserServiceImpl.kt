@@ -27,14 +27,14 @@ open class UserServiceImpl : BaseService(), IUserService {
         if (user == null) {
             return Msg("用户不存在")
         } else if (user.idNo == password) {
-            return Msg(0, null!!, user)
+            return Msg(0, user)
         }
         else {
             val msg = Util.verify(stuNo, password)
             if (msg.code == 0) {
                 val nUser = msg.obj
                 if (this.userDao!!.createUser(nUser!!)) {
-                    return Msg<User>(1, null!!, nUser!!)
+                    return Msg(1, nUser)
                 } else {
                     return Msg("非首次登录, 请使用身份证号.")
                 }

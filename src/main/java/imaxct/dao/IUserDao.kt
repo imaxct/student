@@ -10,7 +10,7 @@ interface IUserDao {
 
     fun getUserById(id: Int): User
 
-    fun getUserByStuNo(stuNo: String): User
+    fun getUserByStuNo(stuNo: String): User?
 
     fun getAllUsers(): List<User>
 }

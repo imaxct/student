@@ -23,6 +23,11 @@ class Msg<T> : Serializable {
         this.msg = msg
     }
 
+    constructor(code: Int, obj: T){
+        this.code = code
+        this.obj = obj
+    }
+
     constructor(code: Int, msg: String, obj: T) {
         this.code = code
         this.msg = msg

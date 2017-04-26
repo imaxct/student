@@ -13,7 +13,7 @@ class UserDaoImpl : BaseDao<User>(), IUserDao {
 
     override fun getUserById(id: Int): User = this.find(User::class.java, id)
 
-    override fun getUserByStuNo(stuNo: String): User = this.uniqueResult("from User where stuNo = ?", stuNo)
+    override fun getUserByStuNo(stuNo: String): User? = this.uniqueResult("from User where stuNo = ?", stuNo)
 
     override fun getAllUsers(): List<User> = this.listPage(0, 500, "from User")
 }
