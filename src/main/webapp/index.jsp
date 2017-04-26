@@ -37,11 +37,11 @@
                     <form action="User/login" method="post">
                         <div class="form-group">
                             <label for="stuNo">用户名</label>
-                            <input class="form-control" name="stuNo" id="stuNo" placeholder="学号" type="text" required>
+                            <input class="form-control" name="username" id="stuNo" placeholder="学号" type="text" required>
                         </div>
                         <div class="form-group">
                             <label for="idNo">密码</label>
-                            <input class="form-control" name="idNo" id="idNo" placeholder="身份证/教务密码" type="text" required>
+                            <input class="form-control" name="password" id="idNo" placeholder="身份证/教务密码" type="text" required>
                         </div>
                         <button class="btn btn-primary btn-lg btn-block">登陆</button>
                         <input type="reset" class="btn btn-default btn-lg btn-block" value="清空">

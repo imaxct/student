@@ -28,6 +28,7 @@ class Course : Serializable {
     /**
      * -1非贫困 0 无限制 1 贫困
      */
+    @Column(name = "fCondition")
     var restrict = 0
 
     @Column(length = 250)

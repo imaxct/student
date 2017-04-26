@@ -26,7 +26,7 @@
 <nav class="navbar navbar-masthead navbar-default">
     <div class="container-fluid">
         <p class="navbar-text navbar-right">
-            <a href="#" class="navbar-link">${user.username}</a>
+            <a href="#" class="navbar-link">${user.name}</a>
             <span>&nbsp;</span>
             <a href="#" class="navbar-link">退出</a>
             <span>&nbsp;</span>
@@ -38,7 +38,7 @@
         <div class="col-md-3">
             <ul class="list-group">
                 <li class="list-group-header">课程</li>
-                <li class="list-group-item"><a href="#" id="courseDeclare">选课公告</a></li>
+                <li class="list-group-item active"><a href="#" id="courseDeclare">选课公告</a></li>
                 <li class="list-group-item"><a href="#" id="courseChoose">选课</a></li>
                 <li class="list-group-item"><a href="#" id="courseSchedule">本学期课表</a></li>
                 <li class="list-group-header">成绩</li>
@@ -67,6 +67,7 @@
             $($(e).parent().children()).removeClass('active');
             $(e).addClass('active');
         });
+    $('#courseDeclare').click();
 </script>
 </body>
 </html>
