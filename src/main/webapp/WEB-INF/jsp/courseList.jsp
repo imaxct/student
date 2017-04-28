@@ -14,13 +14,15 @@
     </tr>
     </thead>
     <tbody>
-<c:forEach var="item" items="${list}">
+    <c:if test="${not empty list}">
+    <c:forEach var="item" items="${list}">
     <tr>
         <td>${item.id}</td><td>${item.name}</td><td>${item.courseTime}</td>
-        <td>${item.location}</td><td>${item.total}/${item.capacity}</td>
-        <td><a href="#" class="btn btn-primary btn-xs chooseClass" data-toggle="${item.id}">选课</a></td>
+        <td>${item.location}</td><td>${item.occupied}/${item.capacity}</td>
+        <td><a href="#" class="btn btn-primary btn-xs chooseClass" onclick="choose(${item.id})">选课</a></td>
     </tr>
-</c:forEach>
+    </c:forEach>
+    </c:if>
     </tbody>
 </table>
 <script>

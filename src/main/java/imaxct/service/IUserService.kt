@@ -16,4 +16,8 @@ interface IUserService {
     fun selectCourse(course: Course, user: User): Msg<*>
 
     fun deSelectCourse(course: Course, user: User): Msg<*>
+
+    fun updateInfo(user: User): Msg<*>
+
+    fun getUserById(id: Int): User
 }

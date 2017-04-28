@@ -15,12 +15,12 @@ class CourseDaoImpl : BaseDao<Course>(), ICourseDao {
 
     override fun getAllCourses(): List<Course> {
         return this.listPage(0, 30,
-                "from Course where endDate > NOW() order by id desc")
+                "from Course where endDate > NOW() or endDate is null order by id desc")
     }
 
     override fun getCourseFromId(id: Int): List<Course> {
         return this.listPage(0, 30,
-                "from Course where endDate > NOW() and id<? order by id desc", id)
+                "from Course where (endDate > NOW() or endDate is null) and id<? order by id desc", id)
     }
 
     override fun getCourseById(id: Int): Course = this.find(Course::class.java, id)

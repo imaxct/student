@@ -11,6 +11,11 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 open class UserServiceImpl : BaseService(), IUserService {
+    override fun getUserById(id: Int): User = this.userDao!!.getUserById(id)
+
+    override fun updateInfo(user: User): Msg<*> =
+            if (this.userDao!!.updateUser(user)) Msg(0, "", null) else Msg<Int>("更新失败.")
+
     override fun selectCourse(course: Course, user: User): Msg<*> {
         TODO("nnn")
     }
@@ -41,7 +46,5 @@ open class UserServiceImpl : BaseService(), IUserService {
         }
     }
 
-    override fun list(): Msg<List<User>> {
-        return Msg(0, "ok", this.userDao!!.getAllUsers())
-    }
+    override fun list(): Msg<List<User>> = Msg(0, "ok", this.userDao!!.getAllUsers())
 }

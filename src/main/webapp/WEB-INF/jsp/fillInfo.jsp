@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <div class="row">
     <div class="col-md-8">
-        <p class="alert alert-danger">请先补全身份信息, 带*号为必填项.</p>
+        <p class="alert alert-danger">带*号为必填项.</p>
         <form id="info_form">
             <div class="form-group">
                 <label for="name">姓名<span class="text-muted">*</span></label>
@@ -19,7 +19,7 @@
                 <label for="sex">性别<span class="text-muted">*</span></label>
                 <c:choose>
                     <c:when test="${empty USER.sex}">
-                        <<select name="sex" id="sex" class="form-control">
+                        <select name="sex" id="sex" class="form-control">
                         <option>男</option>
                         <option>女</option>
                         </select>
@@ -126,7 +126,7 @@
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-8">
-                    <button class="btn btn-primary btn-lg btn-block">提交</button>
+                    <button class="btn btn-primary btn-lg btn-block" id="submit">提交</button>
                     <input type="reset" class="btn btn-default btn-lg btn-block" value="重置">
                 </div>
                 <div class="col-md-2">
@@ -134,5 +134,15 @@
             </div>
         </form>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <script>
+            $('#submit').click(function () {
+                $.post('fillInfo', $('#info_form').serialize(), function (res) {
+                    if (!res) { alert('网络错误'); return}
+                    if (res.code === 0) window.location.reload();
+                    else alert(res.msg)
+                }, 'json')
+            })
+        </script>
+    </div>
 </div>

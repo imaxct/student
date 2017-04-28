@@ -8,6 +8,8 @@ import imaxct.domain.User
 interface IUserDao {
     fun createUser(user: User): Boolean
 
+    fun updateUser(user: User): Boolean
+
     fun getUserById(id: Int): User
 
     fun getUserByStuNo(stuNo: String): User?

@@ -26,7 +26,7 @@
 <nav class="navbar navbar-masthead navbar-default">
     <div class="container-fluid">
         <p class="navbar-text navbar-right">
-            <a href="#" class="navbar-link">${user.name}</a>
+            <a href="#" class="navbar-link" id="user_info">${user.name}</a>
             <span>&nbsp;</span>
             <a href="#" class="navbar-link">退出</a>
             <span>&nbsp;</span>
@@ -66,6 +66,9 @@
             var e = event.currentTarget;
             $($(e).parent().children()).removeClass('active');
             $(e).addClass('active');
+        })
+        .on('click', '#user_info', function () {
+            $('#frame').load('/student/User/fillInfo');
         });
     $('#courseDeclare').click();
 </script>
