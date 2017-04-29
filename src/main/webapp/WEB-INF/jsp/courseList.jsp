@@ -36,9 +36,7 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h5 class="modal-title" id="m1">提示</h5>
             </div>
-            <div class="modal-body">
-                <p>确认选择本课?</p>
-            </div>
+            <div class="modal-body"><p>确认选择本课?</p></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" id="chooseBtn" class="btn btn-primary">确认</button>
@@ -54,12 +52,8 @@
                     <span aria-hidden="true">&times;</span></button>
                 <h5 class="modal-title" id="label2">提示</h5>
             </div>
-            <div class="modal-body">
-                <p id="alert-msg"></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-dismiss="modal">确认</button>
-            </div>
+            <div class="modal-body"><p id="alert-msg"></p></div>
+            <div class="modal-footer"><button type="button" class="btn btn-primary" data-dismiss="modal">确认</button></div>
         </div>
     </div>
 </div>
