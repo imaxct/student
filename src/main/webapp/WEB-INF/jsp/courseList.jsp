@@ -28,13 +28,13 @@
     </c:if>
     </tbody>
 </table>
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="m1">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span></button>
-                <h5 class="modal-title" id="myModalLabel">提示</h5>
+                <h5 class="modal-title" id="m1">提示</h5>
             </div>
             <div class="modal-body">
                 <p>确认选择本课?</p>
@@ -80,14 +80,21 @@
     $(document)
         .on('click', '#chooseBtn', function () {
             $('#chooseBtn').attr('disabled', 'disabled');
-            $.post('/student/C/choose', {id: classId}, function (res) {
-                $('#chooseBtn').removeAttr('disabled');
-                if (!res) {myAlert('网络错误'); return;}
-                if (res.code != 0){
-                    myAlert(res.msg);
-                }else {
-                    myAlert('选课成功');
-                }
-            }, 'json');
+            $.post('/student/C/choose', {id: classId}, 'json')
+                .always(function () {
+                    $('#chooseBtn').removeAttr('disabled');
+                    $('#myModal').modal('hide');
+                })
+                .done(function (res) {
+                    if (!res) { return;}
+                    if (res.code !== 0){
+                        myAlert(res.msg);
+                    }else {
+                        myAlert('选课成功');
+                    }
+                })
+                .fail(function () {
+                    myAlert('网络错误');
+                });
         });
 </script>
