@@ -17,7 +17,7 @@ open class UserServiceImpl : BaseService(), IUserService {
             if (this.userDao!!.updateUser(user)) Msg(0, "", null) else Msg<Int>("更新失败.")
 
     override fun selectCourse(course: Course, user: User): Msg<*> {
-        TODO("nnn")
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun deSelectCourse(course: Course, user: User): Msg<*> {
@@ -27,11 +27,6 @@ open class UserServiceImpl : BaseService(), IUserService {
     override fun login(stuNo: String, password: String): Msg<User> {
         val user = this.userDao!!.getUserByStuNo(stuNo)
         if (user == null) {
-            return Msg("用户不存在")
-        } else if (user.idNo == password) {
-            return Msg(0, user)
-        }
-        else {
             val msg = Util.verify(stuNo, password)
             if (msg.code == 0) {
                 val nUser = msg.obj
@@ -43,6 +38,11 @@ open class UserServiceImpl : BaseService(), IUserService {
             } else {
                 return Msg("登录失败.")
             }
+        } else if (user.idNo == password) {
+            return Msg(0, user)
+        }
+        else {
+            return Msg("密码错误")
         }
     }
 

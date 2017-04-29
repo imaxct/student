@@ -56,7 +56,7 @@ class UserController {
         val modelAndView: ModelAndView
         if (msg.code != 0 && msg.code != 1) {
             modelAndView = ModelAndView("msg")
-            modelAndView.addObject("msg", "登陆失败")
+            modelAndView.addObject("msg", msg.msg)
         } else {
             modelAndView = ModelAndView("redirect:main")
             modelAndView.addObject("user", msg.obj)
