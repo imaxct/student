@@ -7,6 +7,8 @@ import imaxct.domain.Course
  * Created by maxct on 2017/4/9.
  */
 interface ICourseService {
+    fun getCourseById(id: Int): Course?
+
     fun addCourse(course: Course): Msg<*>
 
     fun deleteCourse(course: Course): Msg<*>

@@ -40,10 +40,7 @@
                 <li class="list-group-header">课程</li>
                 <li class="list-group-item active"><a href="#" id="courseDeclare">选课公告</a></li>
                 <li class="list-group-item"><a href="#" id="courseChoose">选课</a></li>
-                <li class="list-group-item"><a href="#" id="courseSchedule">本学期课表</a></li>
-                <li class="list-group-header">成绩</li>
-                <li class="list-group-item"><a href="#" id="scoreTerm">本学期成绩</a></li>
-                <li class="list-group-item"><a href="#" id="scoreAll">所有成绩</a></li>
+                <li class="list-group-item"><a href="#" id="courseSchedule">已选课程</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -68,6 +65,7 @@
             $(e).addClass('active');
         })
         .on('click', '#user_info', function () {
+            $('.list-group-item').removeClass('active');
             $('#frame').load('/student/User/fillInfo');
         });
     $('#courseDeclare').click();

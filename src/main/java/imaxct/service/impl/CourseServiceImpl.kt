@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 open class CourseServiceImpl : BaseService(), ICourseService {
+    override fun getCourseById(id: Int): Course? = this.courseDao!!.getCourseById(id)
 
     override fun addCourse(course: Course): Msg<*> {
         if (courseDao!!.addCourse(course))

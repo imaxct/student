@@ -31,7 +31,7 @@ open class UserServiceImpl : BaseService(), IUserService {
             if (msg.code == 0) {
                 val nUser = msg.obj
                 if (this.userDao!!.createUser(nUser!!)) {
-                    return Msg(1, nUser)
+                    return Msg(0, nUser)
                 } else {
                     return Msg("非首次登录, 请使用身份证号.")
                 }

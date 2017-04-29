@@ -28,7 +28,7 @@ class AuthInterceptor : HandlerInterceptor {
 
     @Throws(Exception::class)
     override fun afterCompletion(httpServletRequest: HttpServletRequest,
-                                 httpServletResponse: HttpServletResponse, o: Any, e: Exception) {
+                                 httpServletResponse: HttpServletResponse, o: Any, e: Exception?) {
 
     }
 }
