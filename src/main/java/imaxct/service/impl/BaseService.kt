@@ -17,4 +17,7 @@ open class BaseService {
 
     @Resource
     protected var selectionDao: ISelectionDao? = null
+
+    @Resource
+    protected var adminDao: IAdminDao? = null
 }

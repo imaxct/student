@@ -10,6 +10,9 @@ import org.springframework.stereotype.Repository
  */
 @Repository
 class AdminDaoImpl : BaseDao<Admin>(), IAdminDao {
+    override fun getAdminByUP(u: String, p: String): Admin?
+            = this.uniqueResult("from Admin where username=? and password=?", u, p)
+
     override fun createAdmin(admin: Admin): Boolean = this.create(admin)
 
     override fun updateAdmin(admin: Admin): Boolean = this.update(admin)

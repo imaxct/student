@@ -41,15 +41,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading"><h3>登陆</h3></div>
                 <div class="panel-body">
-                    <form action="User/login" method="post">
+                    <form action="A/login" method="post">
                         <div class="form-group">
                             <label for="stuNo">用户名</label>
-                            <input class="form-control" name="username" id="stuNo" placeholder="学号" type="text" required>
+                            <input class="form-control" name="u" id="stuNo" placeholder="账号" type="text" required>
                         </div>
                         <div class="form-group">
                             <label for="idNo">密码</label>
-                            <input class="form-control" name="password" id="idNo" placeholder="身份证/教务密码" type="text" required>
-                            <p class="alert-success">非贫困生首次登录请使用教务密码</p>
+                            <input class="form-control" name="p" id="idNo" placeholder="密码" type="password" required>
                         </div>
                         <button class="btn btn-primary btn-lg btn-block">登陆</button>
                         <input type="reset" class="btn btn-default btn-lg btn-block" value="清空">

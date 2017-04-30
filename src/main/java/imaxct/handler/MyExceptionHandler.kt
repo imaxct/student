@@ -16,7 +16,10 @@ class MyExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(Exception::class)
-    fun handleAllException(): Msg<*> = Msg<Int>("系统忙, 请稍候")
+    fun handleAllException(e: Exception): Msg<*> {
+        e.printStackTrace()
+        return Msg<Int>("系统忙, 请稍候")
+    }
 
     @ResponseBody
     @ExceptionHandler(SQLException::class)

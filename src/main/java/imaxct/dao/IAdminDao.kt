@@ -9,6 +9,8 @@ import imaxct.domain.Admin
 interface IAdminDao {
     fun getAdminByUsername(u: String): Admin?
 
+    fun getAdminByUP(u: String, p: String): Admin?
+
     fun createAdmin(admin: Admin): Boolean
 
     fun updateAdmin(admin: Admin): Boolean
