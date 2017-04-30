@@ -11,16 +11,12 @@ import org.springframework.transaction.annotation.Transactional
  */
 @Repository
 @Transactional
-class SettingDaoImpl: BaseDao<Setting>(), ISettingDao{
-    override fun getSettingByName(name: String): Setting? {
-        return null
-    }
+open class SettingDaoImpl: BaseDao<Setting>(), ISettingDao{
+    override fun listSetting(): List<Setting> = this.list("from Setting")
 
-    override fun updateSetting(setting: Setting): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun getSettingByName(name: String): Setting? = this.uniqueResult("from Setting where key=?", name)
 
-    override fun createSetting(setting: Setting): Boolean {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun updateSetting(setting: Setting): Boolean = this.update(setting)
+
+    override fun createSetting(setting: Setting): Boolean = this.create(setting)
 }

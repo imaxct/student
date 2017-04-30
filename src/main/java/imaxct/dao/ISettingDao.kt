@@ -12,4 +12,6 @@ interface ISettingDao {
     fun getSettingByName(name: String): Setting?
 
     fun updateSetting(setting: Setting): Boolean
+
+    fun listSetting(): List<Setting>
 }

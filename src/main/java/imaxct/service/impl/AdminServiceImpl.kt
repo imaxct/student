@@ -11,6 +11,6 @@ import org.springframework.transaction.annotation.Transactional
  */
 @Service
 @Transactional
-class AdminServiceImpl: BaseService(), IAdminService {
+open class AdminServiceImpl: BaseService(), IAdminService {
     override fun login(u: String, p: String): Admin? = this.adminDao!!.getAdminByUP(u, p)
 }
