@@ -2,11 +2,14 @@ package imaxct.service.impl
 
 import imaxct.bean.Msg
 import imaxct.domain.Course
+import imaxct.domain.SelectPK
+import imaxct.domain.Selection
 import imaxct.domain.User
 import imaxct.service.IUserService
 import imaxct.util.Util
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import java.util.*
 
 @Service
 @Transactional
@@ -17,11 +20,43 @@ open class UserServiceImpl : BaseService(), IUserService {
             if (this.userDao!!.updateUser(user)) Msg(0, "", null) else Msg<Int>("更新失败.")
 
     override fun selectCourse(course: Course, user: User): Msg<*> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        if (course.endDate != null && course.endDate!!.before(Date())){
+            return Msg(-1, "课程已截止报名", null)
+        }
+        if (course.restrict == 1 && !user.poor){
+            return Msg(-1, "非贫困生, 不能报名", null)
+        }
+        if (course.restrict == -1 && user.poor){
+            return Msg(-1, "仅非贫困生可报", null)
+        }
+        if (course.gradeLimit != null && course.gradeLimit != user.grade){
+            return Msg(-1, "你所在的年级不能报名", null)
+        }
+        if (course.occupied >= course.capacity){
+            return Msg(-1, "报名人数已满", null)
+        }
+        course.occupied = course.occupied + 1
+        val sid: SelectPK = SelectPK(user, course)
+        val s: Selection = Selection(sid)
+        if (courseDao!!.updateCourse(course) && selectionDao!!.createSelection(s)){
+            return Msg(0, "选课成功", null)
+        }else {
+            return Msg(-1, "系统忙, 稍后再试", null)
+        }
     }
 
+    /**
+     * 取消选课
+     * */
     override fun deSelectCourse(course: Course, user: User): Msg<*> {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        val sid = SelectPK(user, course)
+        val s = selectionDao!!.getSelectionById(sid) ?: return Msg(-1, "删除失败", null)
+        course.occupied = course.occupied - 1
+        if (courseDao!!.updateCourse(course) && selectionDao!!.deleteSelection(s)){
+            return Msg(0, "成功", null)
+        }else{
+            return Msg(-1, "操作失败", null)
+        }
     }
 
     override fun login(stuNo: String, password: String): Msg<User> {

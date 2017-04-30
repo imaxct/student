@@ -42,6 +42,7 @@
                         <div class="form-group">
                             <label for="idNo">密码</label>
                             <input class="form-control" name="password" id="idNo" placeholder="身份证/教务密码" type="text" required>
+                            <p class="alert-success">非贫困生首次登录请使用教务密码</p>
                         </div>
                         <button class="btn btn-primary btn-lg btn-block">登陆</button>
                         <input type="reset" class="btn btn-default btn-lg btn-block" value="清空">

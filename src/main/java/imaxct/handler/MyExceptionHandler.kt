@@ -16,7 +16,7 @@ class MyExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(Exception::class)
-    fun handleAllException(e: Exception): Msg<*> = Msg<Int>("Access Denied.")
+    fun handleAllException(): Msg<*> = Msg<Int>("系统忙, 请稍候")
 
     @ResponseBody
     @ExceptionHandler(SQLException::class)

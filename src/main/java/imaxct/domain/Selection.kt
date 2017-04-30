@@ -9,6 +9,13 @@ import java.util.Date
 @Table(name = "STU_selection")
 class Selection : Serializable {
 
+    constructor(){}
+
+    constructor(id: SelectPK){
+        this.id = id
+        selectDate = Date()
+    }
+
     @EmbeddedId
     var id: SelectPK? = null
 
