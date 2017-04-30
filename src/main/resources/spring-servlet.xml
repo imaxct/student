@@ -41,5 +41,10 @@
             <mvc:mapping path="/C/**"/>
             <bean class="imaxct.interceptor.InfoInterceptor"/>
         </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/A/**"/>
+            <mvc:exclude-mapping path="/A/login"/>
+            <bean class="imaxct.interceptor.AInterceptor"/>
+        </mvc:interceptor>
     </mvc:interceptors>
 </beans>
