@@ -64,4 +64,8 @@ class UserController {
         return modelAndView
     }
 
+    @RequestMapping(value = "/G")
+    fun getDeclare(){
+
+    }
 }

@@ -54,7 +54,7 @@
 <script>
     $(document)
         .on('click', '#courseDeclare', function () {
-            $('#frame').load('/student/static/declare.html');
+            $('#frame').load('/student/G');
         })
         .on('click', '#courseChoose', function () {
             $('#frame').load('/student/C/list');

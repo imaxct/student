@@ -33,6 +33,11 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/User/**"/>
+            <bean class="imaxct.interceptor.SettingInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/User/**"/>
+            <mvc:mapping path="/C/**"/>
             <mvc:exclude-mapping path="/User/login"/>
             <bean class="imaxct.interceptor.AuthInterceptor"/>
         </mvc:interceptor>
