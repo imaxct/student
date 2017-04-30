@@ -2,6 +2,7 @@ package imaxct.service
 
 import imaxct.bean.Msg
 import imaxct.domain.Course
+import imaxct.domain.Selection
 import imaxct.domain.User
 
 /**
@@ -20,4 +21,6 @@ interface IUserService {
     fun updateInfo(user: User): Msg<*>
 
     fun getUserById(id: Int): User
+
+    fun getCourseByUser(user: User): List<Selection>
 }

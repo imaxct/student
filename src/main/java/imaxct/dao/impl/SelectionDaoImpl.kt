@@ -5,11 +5,13 @@ import imaxct.domain.Course
 import imaxct.domain.SelectPK
 import imaxct.domain.Selection
 import imaxct.domain.User
+import org.springframework.stereotype.Repository
 
 /**
  * Created by imaxct on 17-4-30.
  * student
  */
+@Repository
 class SelectionDaoImpl: BaseDao<Selection>(), ISelectionDao {
 
     override fun getSelectionById(id: SelectPK): Selection? = this.find(Selection::class.java, id)

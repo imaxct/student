@@ -40,7 +40,7 @@
                 <li class="list-group-header">课程</li>
                 <li class="list-group-item active"><a href="#" id="courseDeclare">选课公告</a></li>
                 <li class="list-group-item"><a href="#" id="courseChoose">选课</a></li>
-                <li class="list-group-item"><a href="#" id="courseSchedule">已选课程</a></li>
+                <li class="list-group-item"><a href="#" id="chosen">已选课程</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -63,6 +63,9 @@
             var e = event.currentTarget;
             $($(e).parent().children()).removeClass('active');
             $(e).addClass('active');
+        })
+        .on('click', '#chosen', function () {
+            $('#frame').load('/student/C/chosen')
         })
         .on('click', '#user_info', function () {
             $('.list-group-item').removeClass('active');

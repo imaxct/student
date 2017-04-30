@@ -14,6 +14,8 @@ import java.util.*
 @Service
 @Transactional
 open class UserServiceImpl : BaseService(), IUserService {
+    override fun getCourseByUser(user: User): List<Selection> = this.selectionDao!!.getSelectionByUser(user)
+
     override fun getUserById(id: Int): User = this.userDao!!.getUserById(id)
 
     override fun updateInfo(user: User): Msg<*> =
@@ -35,8 +37,11 @@ open class UserServiceImpl : BaseService(), IUserService {
         if (course.occupied >= course.capacity){
             return Msg(-1, "报名人数已满", null)
         }
-        course.occupied = course.occupied + 1
         val sid: SelectPK = SelectPK(user, course)
+        if (selectionDao!!.getSelectionById(sid) != null){
+            return Msg(-1, "已经选过这门课了", null)
+        }
+        course.occupied = course.occupied + 1
         val s: Selection = Selection(sid)
         if (courseDao!!.updateCourse(course) && selectionDao!!.createSelection(s)){
             return Msg(0, "选课成功", null)
@@ -53,14 +58,14 @@ open class UserServiceImpl : BaseService(), IUserService {
         val s = selectionDao!!.getSelectionById(sid) ?: return Msg(-1, "删除失败", null)
         course.occupied = course.occupied - 1
         if (courseDao!!.updateCourse(course) && selectionDao!!.deleteSelection(s)){
-            return Msg(0, "成功", null)
+            return Msg(0, "退课成功", null)
         }else{
             return Msg(-1, "操作失败", null)
         }
     }
 
     override fun login(stuNo: String, password: String): Msg<User> {
-        val user = this.userDao!!.getUserByStuNo(stuNo)
+        val user: User? = this.userDao!!.getUserByStuNo(stuNo)
         if (user == null) {
             val msg = Util.verify(stuNo, password)
             if (msg.code == 0) {
