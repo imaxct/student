@@ -6,4 +6,5 @@ package imaxct.util
  */
 object AppConst {
     val OPEN: String = "opening"
+    val FILE_TOKEN: String = "uploadedFile"
 }

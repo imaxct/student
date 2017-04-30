@@ -38,7 +38,7 @@
         <div class="col-md-3">
             <ul class="list-group">
                 <li class="list-group-header">课程</li>
-                <li class="list-group-item active"><a href="#" id="courseDeclare">选课公告</a></li>
+                <li class="list-group-item"><a href="#" id="courseDeclare">选课公告</a></li>
                 <li class="list-group-item"><a href="#" id="courseChoose">选课</a></li>
                 <li class="list-group-item"><a href="#" id="chosen">已选课程</a></li>
             </ul>
@@ -71,7 +71,6 @@
             $('.list-group-item').removeClass('active');
             $('#frame').load('/student/User/fillInfo');
         });
-    $('#courseDeclare').click();
 </script>
 </body>
 </html>

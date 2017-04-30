@@ -3,6 +3,7 @@ package imaxct.util
 import imaxct.bean.Msg
 import imaxct.domain.User
 import net.sf.json.JSONObject
+import org.apache.poi.xssf.binary.XSSFBUtils
 import org.jsoup.Connection
 import org.jsoup.Jsoup
 import org.springframework.util.StringUtils
@@ -14,6 +15,11 @@ import java.io.IOException
  * student
  */
 object Util {
+
+    fun readHeadFromExcel(){
+        //val x
+
+    }
 
     fun verify(username: String, password: String): Msg<User> {
         try {
