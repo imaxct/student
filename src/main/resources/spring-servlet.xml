@@ -11,7 +11,9 @@
         <property name="messageConverters" ref="jsonConverter"/>
     </bean>
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:async-support default-timeout="20000"/>
+    </mvc:annotation-driven>
 
     <context:component-scan base-package="imaxct.controller"/>
 

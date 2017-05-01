@@ -6,18 +6,15 @@ import imaxct.service.IAdminService
 import imaxct.util.AppConst
 import net.sf.json.JSONArray
 import net.sf.json.JSONObject
-import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.springframework.stereotype.Controller
-import org.springframework.ui.ModelMap
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.SessionAttributes
 import org.springframework.web.multipart.MultipartFile
-import org.springframework.web.multipart.MultipartHttpServletRequest
 import org.springframework.web.servlet.ModelAndView
 import java.io.File
 import java.util.*
@@ -125,6 +122,7 @@ class AdminController {
             session: HttpSession): Callable<Msg<*>>{
         return Callable({
             val fileName = session.getAttribute(AppConst.FILE_TOKEN) as String
+            session.removeAttribute(AppConst.FILE_TOKEN)
             if (fileName.isNullOrEmpty())
                 Msg(-1, "未找到文件", null)
             val f: File = File(fileName)
@@ -145,8 +143,11 @@ class AdminController {
                 val u: User = User(stuNo = stn, idNo = idn, sex = se, grade = grd, name = nm)
                 list.add(u)
             }
-
-            Msg(0, "ok", null)
+            val msg = adminService!!.clearAllRecord()
+            if (adminService!!.addUsers(list))
+                Msg(0, "导入成功, ${msg.msg}", null)
+            else
+                Msg(-1, "导入失败, ${msg.msg}", null)
         })
     }
 

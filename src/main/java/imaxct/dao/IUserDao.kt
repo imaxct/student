@@ -17,4 +17,6 @@ interface IUserDao {
     fun getAllUsers(): List<User>
 
     fun addUsers(list: MutableList<User>): Boolean
+
+    fun clearAllUser(): Int
 }

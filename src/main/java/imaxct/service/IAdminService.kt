@@ -1,5 +1,6 @@
 package imaxct.service
 
+import imaxct.bean.Msg
 import imaxct.domain.Admin
 import imaxct.domain.User
 
@@ -11,4 +12,6 @@ interface IAdminService {
     fun login(u: String, p: String): Admin?
 
     fun addUsers(list: MutableList<User>): Boolean
+
+    fun clearAllRecord(): Msg<*>
 }

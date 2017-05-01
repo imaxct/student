@@ -19,4 +19,6 @@ interface ISelectionDao {
     fun getSelectionById(id: SelectPK): Selection?
 
     fun getSelectionByCourse(course: Course): List<Selection>
+
+    fun clearAllSelection(): Int
 }

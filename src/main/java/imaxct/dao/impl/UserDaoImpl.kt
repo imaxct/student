@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class UserDaoImpl : BaseDao<User>(), IUserDao {
+    override fun clearAllUser(): Int = this.query("delete from User")
+
     override fun addUsers(list: MutableList<User>): Boolean = this.batchInsert(list)
 
     override fun updateUser(user: User): Boolean = this.update(user)

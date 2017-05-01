@@ -148,6 +148,13 @@ open class BaseDao<T> {
         return false
     }
 
+    fun query(hql: String, vararg objects: Any): Int{
+        val session = currentSession()
+        val query = session.createQuery(hql)
+        for ((i, x) in objects.withIndex()) query.setParameter(i, x)
+        return query.executeUpdate()
+    }
+
     companion object {
         protected var logger: Logger = LogManager.getLogger(BaseDao::class.java)
     }

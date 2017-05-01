@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository
  */
 @Repository
 class SelectionDaoImpl: BaseDao<Selection>(), ISelectionDao {
+    override fun clearAllSelection(): Int = this.query("delete from Selection")
 
     override fun getSelectionById(id: SelectPK): Selection? = this.find(Selection::class.java, id)
 
