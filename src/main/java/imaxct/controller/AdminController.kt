@@ -114,4 +114,9 @@ class AdminController {
         return mav
     }
 
+    @RequestMapping(value = "/doIn", method = arrayOf(RequestMethod.POST))
+    fun doImport(){
+
+    }
+
 }
