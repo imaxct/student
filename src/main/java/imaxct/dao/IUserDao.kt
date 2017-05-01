@@ -15,4 +15,6 @@ interface IUserDao {
     fun getUserByStuNo(stuNo: String): User?
 
     fun getAllUsers(): List<User>
+
+    fun addUsers(list: MutableList<User>): Boolean
 }

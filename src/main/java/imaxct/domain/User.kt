@@ -6,6 +6,25 @@ import java.io.Serializable
 @Entity
 @Table(name = "STU_user")
 class User : Serializable {
+
+    constructor(){}
+
+    constructor(stuNo: String? = null, sex: String? = null, name: String? = null, idNo: String? = null,
+                grade: String? = null, campus: String? = null, phone: String? = null, qq: String? = null,
+                email: String? = null, poor: Boolean = false) {
+        this.stuNo = stuNo
+        this.sex = sex
+        this.name = name
+        this.idNo = idNo
+        this.grade = grade
+        this.campus = campus
+        this.phone = phone
+        this.qq = qq
+        this.email = email
+        this.poor = poor
+    }
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     var id: Int = 0

@@ -44,9 +44,11 @@
                 $('#submit').removeAttr('disabled');
                 $('#progress').removeClass('active').hide();
                 if (res.code === 0){
-                    alert('导入成功.')
+                    alert('导入成功.');
+                    window.location.reload();
                 }else {
                     alert('导入失败.');
+                    window.location.reload();
                 }
             });
     });

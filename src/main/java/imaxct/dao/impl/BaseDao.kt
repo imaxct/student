@@ -121,8 +121,12 @@ open class BaseDao<T> {
     fun batchUpdate(vararg objects: Any): Boolean {
         if (objects.isNotEmpty()) {
             val session = currentSession()
-            for (obj in objects) {
+            for ((cnt, obj) in objects.withIndex()) {
                 session.update(obj)
+                if (cnt % 50 == 0){
+                    session.flush()
+                    session.clear()
+                }
             }
             return true
         }
@@ -132,8 +136,12 @@ open class BaseDao<T> {
     fun batchInsert(vararg objects: Any): Boolean {
         if (objects.isNotEmpty()) {
             val session = currentSession()
-            for (obj in objects) {
+            for ((cnt, obj) in objects.withIndex()) {
                 session.persist(obj)
+                if (cnt % 50 == 0) {
+                    session.flush()
+                    session.clear()
+                }
             }
             return true
         }
