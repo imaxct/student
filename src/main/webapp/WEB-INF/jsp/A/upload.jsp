@@ -7,7 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <link rel="stylesheet" href="/student/static/css/jquery.fileupload.css">
-<p class="alert-info">上传文件类型只能是</p>
+<p class="alert alert-info">上传文件类型只能是xls和xlsx</p>
+<p class="alert alert-danger">此操作会清除所有用户信息和选课信息!!!</p>
 <div id="progress" class="progress">
     <div class="progress-bar progress-bar-success"></div>
 </div>
@@ -40,8 +41,6 @@
 <!-- The File Upload validation plugin -->
 <script src="/student/static/js/jquery.fileupload-validate.js"></script>
 <script>
-    /*jslint unparam: true, regexp: true */
-    /*global window, $ */
     $(function () {
         'use strict';
         // Change this to the location of your server-side upload handler:
@@ -120,7 +119,7 @@
                 if (file.name){
                     $(data.context.children()[index])
                         .append('<p>上传成功</p>')
-                        .append('<button class="btn btn-primary" id="next">下一步</button>');
+                        .append('<button class="btn btn-primary" id="selectHead">下一步</button>');
                 }
                 if (file.url) {
                     var link = $('<a>')
@@ -144,8 +143,10 @@
             });
         }).prop('disabled', !$.support.fileInput)
             .parent().addClass($.support.fileInput ? undefined : 'disabled');
-        $('#next').click(function () {
-            $('#frame').load('/student/A/selectHead');
-        });
+    });
+</script>
+<script>
+    $('#selectHead').click(function () {
+        $('#frame').load('/student/A/selectHead');
     });
 </script>

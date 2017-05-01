@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager
 import org.apache.logging.log4j.Logger
 import org.hibernate.Session
 import org.hibernate.SessionFactory
-import org.hibernate.query.Query
 
 import javax.annotation.Resource
 import java.io.Serializable
@@ -118,10 +117,10 @@ open class BaseDao<T> {
         return query.list() as List<T>
     }
 
-    fun batchUpdate(vararg objects: Any): Boolean {
-        if (objects.isNotEmpty()) {
+    fun batchUpdate(list: List<T>): Boolean {
+        if (list.isNotEmpty()) {
             val session = currentSession()
-            for ((cnt, obj) in objects.withIndex()) {
+            for ((cnt, obj) in list.withIndex()) {
                 session.update(obj)
                 if (cnt % 50 == 0){
                     session.flush()
@@ -133,10 +132,10 @@ open class BaseDao<T> {
         return false
     }
 
-    fun batchInsert(vararg objects: Any): Boolean {
-        if (objects.isNotEmpty()) {
+    fun batchInsert(list: List<T>): Boolean {
+        if (list.isNotEmpty()) {
             val session = currentSession()
-            for ((cnt, obj) in objects.withIndex()) {
+            for ((cnt, obj) in list.withIndex()) {
                 session.persist(obj)
                 if (cnt % 50 == 0) {
                     session.flush()

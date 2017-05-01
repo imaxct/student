@@ -38,9 +38,9 @@
         <div class="col-md-3">
             <ul class="list-group">
                 <li class="list-group-header">课程</li>
-                <li class="list-group-item"><a href="#" id="courseDeclare">选课公告</a></li>
-                <li class="list-group-item"><a href="#" id="courseChoose">选课</a></li>
-                <li class="list-group-item"><a href="#" id="chosen">已选课程</a></li>
+                <li class="list-group-item"><a href="#" id="courses">选课信息</a></li>
+                <li class="list-group-item"><a href="#" id="import">导入信息</a></li>
+                <li class="list-group-item"><a href="#" id="addCourse">添加课程</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -56,8 +56,8 @@
         .on('click', '#courseDeclare', function () {
             $('#frame').load('/student/static/declare.html');
         })
-        .on('click', '#courseChoose', function () {
-            $('#frame').load('/student/C/list');
+        .on('click', '#import', function () {
+            $('#frame').load('/student/A/upload');
         })
         .on('click', '.list-group-item', function (event) {
             var e = event.currentTarget;
@@ -66,10 +66,6 @@
         })
         .on('click', '#chosen', function () {
             $('#frame').load('/student/C/chosen')
-        })
-        .on('click', '#user_info', function () {
-            $('.list-group-item').removeClass('active');
-            $('#frame').load('/student/User/fillInfo');
         });
 </script>
 </body>

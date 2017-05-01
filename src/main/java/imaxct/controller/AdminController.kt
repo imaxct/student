@@ -82,13 +82,14 @@ class AdminController {
     fun upload(file: MultipartFile, session: HttpSession): Map<String, JSONArray> {
         val dir: File = File("upload")
         if (!dir.exists()){
-            dir.createNewFile()
+            dir.mkdir()
         }
         val arr: JSONArray = JSONArray()
         println(file.originalFilename)
         val fName = UUID.randomUUID().toString()
         val nName = fName + file.originalFilename.substring(file.originalFilename.lastIndexOf('.'))
-        file.transferTo(File("${dir.name}/$nName"))
+        val fullFile: File = File(dir, nName)
+        file.transferTo(fullFile)
         val obj: JSONObject = JSONObject()
         obj.put("name", nName)
         arr.add(obj)
@@ -140,7 +141,7 @@ class AdminController {
                 val se: String? = row.getCell(sex).stringCellValue
                 val grd: String? = row.getCell(grade).stringCellValue
                 val nm: String? = row.getCell(name).stringCellValue
-                val u: User = User(stuNo = stn, idNo = idn, sex = se, grade = grd, name = nm)
+                val u: User = User(stuNo = stn, idNo = idn, sex = se, grade = grd, name = nm, poor = true)
                 list.add(u)
             }
             val msg = adminService!!.clearAllRecord()

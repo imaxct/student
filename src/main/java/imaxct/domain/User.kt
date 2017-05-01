@@ -35,7 +35,7 @@ class User : Serializable {
     @Column(length = 5)
     var sex: String? = null
 
-    @Column(length = 20)
+    @Column(length = 50)
     var name: String? = null
 
     @Column(length = 20, unique = true)
