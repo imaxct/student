@@ -146,7 +146,7 @@
     });
 </script>
 <script>
-    $('#selectHead').click(function () {
+    $(document).on('click', '#selectHead', function () {
         $('#frame').load('/student/A/selectHead');
     });
 </script>
