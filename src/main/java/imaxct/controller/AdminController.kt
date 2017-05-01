@@ -20,6 +20,7 @@ import java.io.File
 import java.util.*
 import java.util.concurrent.Callable
 import javax.annotation.Resource
+import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpSession
 
 /**
@@ -53,29 +54,16 @@ class AdminController {
         return mav
     }
 
+    @RequestMapping(value = "/logout")
+    fun logout(req: HttpServletRequest): String{
+        req.getSession(false)?.invalidate()
+        return "redirect:/admin.jsp"
+    }
+
     @RequestMapping(value = "/upload")
     fun uploadFront(): String{
         return "A/upload"
     }
-
-    /*@RequestMapping(value = "/upload", method = arrayOf(RequestMethod.POST))
-    fun upload(req: MultipartHttpServletRequest, session: HttpSession): Map<String, JSONArray> {
-        val it: Iterator<String> = req.fileNames
-        var file: MultipartFile
-        val arr: JSONArray = JSONArray()
-        while (it.hasNext()){
-            file = req.getFile(it.next())
-            println(file.originalFilename)
-            val fName = UUID.randomUUID().toString()
-            val nName = fName + file.originalFilename.substring(file.originalFilename.lastIndexOf('.'))
-            file.transferTo(File(nName))
-            val obj: JSONObject = JSONObject()
-            obj.put("name", nName)
-            arr.add(obj)
-            println(nName)
-        }
-        return mapOf("files" to arr)
-    }*/
 
     @ResponseBody
     @RequestMapping(value = "/upload", method = arrayOf(RequestMethod.POST))
