@@ -29,7 +29,6 @@ import javax.servlet.http.HttpSession
  */
 @Controller
 @RequestMapping("/A")
-@SessionAttributes("admin")
 class AdminController {
 
     @Resource

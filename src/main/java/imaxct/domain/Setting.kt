@@ -20,9 +20,9 @@ class Setting{
     @GeneratedValue
     var id: Int = 0
 
-    @Column(length = 20)
+    @Column(name = "setting_key", length = 20)
     var key: String = ""
 
-    @Column(length = 500)
+    @Column(name = "setting_value", length = 500)
     var value: String = ""
 }

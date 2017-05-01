@@ -54,7 +54,7 @@
 <script>
     $(document)
         .on('click', '#courseDeclare', function () {
-            $('#frame').load('/student/static/declare.html');
+            $('#frame').load('/student/static/declare.jsp');
         })
         .on('click', '#import', function () {
             $('#frame').load('/student/A/upload');

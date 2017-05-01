@@ -1,8 +1,10 @@
 package imaxct.controller
 
 import imaxct.bean.Msg
+import imaxct.dao.ISettingDao
 import imaxct.domain.User
 import imaxct.service.IUserService
+import imaxct.util.AppConst
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
@@ -14,11 +16,13 @@ import javax.servlet.http.HttpSession
 
 @Controller
 @RequestMapping(value = "/User")
-@SessionAttributes("user")
 class UserController {
 
     @Resource
     private val userService: IUserService? = null
+
+    @Resource
+    private val settingDao: ISettingDao? = null
 
 
     @RequestMapping(value = "/main")
@@ -65,7 +69,10 @@ class UserController {
     }
 
     @RequestMapping(value = "/G")
-    fun getDeclare(){
-
+    fun getDeclare(): ModelAndView{
+        val mav = ModelAndView("declare")
+        val d = settingDao!!.getSettingByName(AppConst.SETTING_DECLARE)
+        mav.addObject("msg", d?.value ?: "暂无公告")
+        return mav
     }
 }

@@ -18,7 +18,7 @@ class SettingInterceptor :HandlerInterceptor {
     val settingDao: ISettingDao? = null
 
     override fun preHandle(request: HttpServletRequest?, response: HttpServletResponse?, handler: Any?): Boolean {
-        val s = settingDao!!.getSettingByName(AppConst.OPEN)
+        val s = settingDao!!.getSettingByName(AppConst.SETTING_OPEN)
         if (s == null || s.value== "0"){
             response!!.writer.println("<h1>site closed</h1>")
             return false
