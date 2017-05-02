@@ -14,4 +14,6 @@ interface ISettingDao {
     fun updateSetting(setting: Setting): Boolean
 
     fun listSetting(): List<Setting>
+
+    fun createOrUpdate(setting: Setting): Boolean
 }

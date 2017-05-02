@@ -38,9 +38,10 @@
         <div class="col-md-3">
             <ul class="list-group">
                 <li class="list-group-header">课程</li>
-                <li class="list-group-item"><a href="#" id="courses">选课信息</a></li>
+                <li class="list-group-item"><a href="#" id="courses">课程信息</a></li>
                 <li class="list-group-item"><a href="#" id="import">导入信息</a></li>
                 <li class="list-group-item"><a href="#" id="addCourse">添加课程</a></li>
+                <li class="list-group-item"><a href="#" id="setting">系统设置</a></li>
             </ul>
         </div>
         <div class="col-md-9">
@@ -53,8 +54,8 @@
 <script src="/student/static/js/bootstrap.min.js"></script>
 <script>
     $(document)
-        .on('click', '#courseDeclare', function () {
-            $('#frame').load('/student/static/declare.jsp');
+        .on('click', '#courses', function () {
+            $('#frame').load('/student/A/list');
         })
         .on('click', '#import', function () {
             $('#frame').load('/student/A/upload');
@@ -64,8 +65,11 @@
             $($(e).parent().children()).removeClass('active');
             $(e).addClass('active');
         })
-        .on('click', '#chosen', function () {
-            $('#frame').load('/student/C/chosen')
+        .on('click', '#addCourse', function () {
+            $('#frame').load('/student/A/add')
+        })
+        .on('click', '#setting', function () {
+            $('#frame').load('/student/A/setting');
         });
 </script>
 </body>

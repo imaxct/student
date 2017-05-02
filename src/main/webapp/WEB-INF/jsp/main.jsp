@@ -28,7 +28,7 @@
         <p class="navbar-text navbar-right">
             <a href="#" class="navbar-link" id="user_info">${user.name}</a>
             <span>&nbsp;</span>
-            <a href="#" class="navbar-link">退出</a>
+            <a href="logout" class="navbar-link">退出</a>
             <span>&nbsp;</span>
         </p>
     </div>
@@ -54,7 +54,7 @@
 <script>
     $(document)
         .on('click', '#courseDeclare', function () {
-            $('#frame').load('/student/G');
+            $('#frame').load('/student/User/G');
         })
         .on('click', '#courseChoose', function () {
             $('#frame').load('/student/C/list');

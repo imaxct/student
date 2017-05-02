@@ -2,6 +2,8 @@ package imaxct.service.impl
 
 import imaxct.bean.Msg
 import imaxct.domain.Admin
+import imaxct.domain.Course
+import imaxct.domain.Selection
 import imaxct.domain.User
 import imaxct.service.IAdminService
 import org.springframework.stereotype.Service
@@ -14,6 +16,10 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 open class AdminServiceImpl: BaseService(), IAdminService {
+    override fun getUserByCourse(course: Course): List<Selection> = this.selectionDao!!.getSelectionByCourse(course)
+
+    override fun getCourses(): List<Course> = this.courseDao!!.allCourses()
+
     override fun clearAllRecord(): Msg<*> {
         val s = this.selectionDao!!.clearAllSelection()
         val u = this.userDao!!.clearAllUser()

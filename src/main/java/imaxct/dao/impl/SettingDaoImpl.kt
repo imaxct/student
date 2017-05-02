@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional
 @Repository
 @Transactional
 open class SettingDaoImpl: BaseDao<Setting>(), ISettingDao{
+    override fun createOrUpdate(setting: Setting): Boolean = this.saveOrUpdate(setting)
+
     override fun listSetting(): List<Setting> = this.list("from Setting")
 
     override fun getSettingByName(name: String): Setting? = this.uniqueResult("from Setting where key=?", name)

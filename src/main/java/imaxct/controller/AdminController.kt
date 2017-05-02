@@ -1,8 +1,11 @@
 package imaxct.controller
 
 import imaxct.bean.Msg
+import imaxct.dao.ISettingDao
+import imaxct.domain.Setting
 import imaxct.domain.User
 import imaxct.service.IAdminService
+import imaxct.service.ICourseService
 import imaxct.util.AppConst
 import net.sf.json.JSONArray
 import net.sf.json.JSONObject
@@ -13,7 +16,6 @@ import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.ResponseBody
-import org.springframework.web.bind.annotation.SessionAttributes
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 import java.io.File
@@ -33,6 +35,12 @@ class AdminController {
 
     @Resource
     var adminService: IAdminService? = null
+
+    @Resource
+    var settingDao: ISettingDao? = null
+
+    @Resource
+    var courseService: ICourseService? = null
 
     @RequestMapping(value = "/main")
     fun main(): String{
@@ -139,4 +147,37 @@ class AdminController {
         })
     }
 
+    @RequestMapping(value = "/list")
+    fun getCourseList(session: HttpSession): ModelAndView{
+        val list = adminService!!.getCourses()
+        val mav = ModelAndView("A/courseList")
+        mav.addObject("list", list)
+        return mav
+    }
+
+    @RequestMapping(value = "/setting")
+    fun setting(): ModelAndView{
+        val mav = ModelAndView("A/setting")
+        val list = settingDao!!.listSetting()
+        for (l in list) mav.addObject(l.key, l.value)
+        return mav
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/setting", method = arrayOf(RequestMethod.POST))
+    fun updateSetting(key: String, value: String): Msg<*>{
+        val s = Setting(key, value)
+        if (settingDao!!.createOrUpdate(s))
+            return Msg(0, "ok", null)
+        return Msg(-1, "更新失败", null)
+    }
+
+    @RequestMapping(value = "/exp")
+    fun export(id: Int): ModelAndView{
+        val mav = ModelAndView("A/exp")
+        val course = courseService!!.getCourseById(id) ?: return ModelAndView("A/msg", mapOf("msg" to "错误"))
+        val list = adminService!!.getUserByCourse(course)
+        mav.addObject("list", list)
+        return mav
+    }
 }

@@ -17,4 +17,6 @@ interface ICourseDao {
     fun getCourseById(id: Int): Course
 
     fun getCourseFromId(id: Int): List<Course>
+
+    fun allCourses(): List<Course>
 }

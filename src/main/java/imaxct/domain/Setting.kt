@@ -17,9 +17,6 @@ class Setting{
     }
 
     @Id
-    @GeneratedValue
-    var id: Int = 0
-
     @Column(name = "setting_key", length = 20)
     var key: String = ""
 

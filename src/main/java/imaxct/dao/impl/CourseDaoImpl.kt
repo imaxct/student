@@ -6,6 +6,7 @@ import org.springframework.stereotype.Repository
 
 @Repository
 class CourseDaoImpl : BaseDao<Course>(), ICourseDao {
+    override fun allCourses(): List<Course> = this.list("from Course order by id desc")
 
     override fun addCourse(course: Course): Boolean = this.create(course)
 

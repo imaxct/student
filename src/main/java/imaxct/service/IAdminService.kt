@@ -2,6 +2,8 @@ package imaxct.service
 
 import imaxct.bean.Msg
 import imaxct.domain.Admin
+import imaxct.domain.Course
+import imaxct.domain.Selection
 import imaxct.domain.User
 
 /**
@@ -14,4 +16,8 @@ interface IAdminService {
     fun addUsers(list: MutableList<User>): Boolean
 
     fun clearAllRecord(): Msg<*>
+
+    fun getCourses(): List<Course>
+
+    fun getUserByCourse(course: Course): List<Selection>
 }

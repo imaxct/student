@@ -39,6 +39,12 @@ class UserController {
         return mav
     }
 
+    @RequestMapping(value = "/logout")
+    fun logout(session: HttpSession): String{
+        session.invalidate()
+        return "redirect:/"
+    }
+
     @ResponseBody
     @RequestMapping(value = "/fillInfo", method = arrayOf(RequestMethod.POST))
     fun fillInfo(u: User, session: HttpSession): Msg<*> {
