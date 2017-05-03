@@ -14,15 +14,16 @@
             <option value="1">开启</option>
             <option value="0">关闭</option>
         </select>
-        <a class="btn btn-primary" id="sub_open">提交</a>
+        <a href="#" class="btn btn-primary" id="sub_open">提交</a>
     </div>
 </form>
 </div>
 <div class="row">
 <form class="form-inline">
     <div class="form-group">
+        <label for="dec">编辑公告</label>
         <textarea class="form-control" id="dec">${declare}</textarea>
-        <a class="btn btn-primary" id="sub_declare">提交</a>
+        <a href="#" class="btn btn-primary" id="sub_declare">提交</a>
     </div>
 </form>
 </div>

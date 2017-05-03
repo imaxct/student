@@ -38,7 +38,7 @@ class Course : Serializable {
 
     var occupied = 0
 
-    @Column(length = 10)
+    @Column(length = 30)
     var gradeLimit: String? = null
 
     @Column(length = 100)
