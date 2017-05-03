@@ -58,7 +58,7 @@
     </div>
     <div class="form-group">
         <label for="intro">课程介绍</label>
-        <textarea id="intro" rows="10" name="description"></textarea>
+        <textarea id="intro" rows="10" name="description" class="form-control"></textarea>
     </div>
     <a id="sub" class="btn btn-primary form-control" href="#">提交</a>
 </form>
@@ -82,6 +82,11 @@
     $('#endDate').val(endDate);
     $('#intro').val('${course.description}');
     </c:if>
+    var options = {
+        year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        hour12: false
+    };
     $('#sub').click(function () {
         var data = {
             name: $('#name').val(),
@@ -90,10 +95,10 @@
             courseTime: $('#courseTime').val(),
             capacity: $('#capacity').val(),
             gradeLimit: $('#gradeLimit').val(),
-            endDate: $('#endDate').val(),
+            endDate: new Date($('#endDate').val()).toLocaleString('zh-CN', options),
             description: $('#intro').val()
         };
-        if (id){
+        if (!(typeof(id) === 'undefined')){
             data.id = id;
         }
         $.post('editor', data , 'json')

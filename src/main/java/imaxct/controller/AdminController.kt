@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 import java.io.File
+import java.text.DateFormat
+import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.Callable
 import javax.annotation.Resource
@@ -193,7 +195,11 @@ class AdminController {
 
     @ResponseBody
     @PostMapping(value = "/editor")
-    fun addOrEditCourse(course: Course): Msg<*>{
+    fun addOrEditCourse(endDate: String?, course: Course): Msg<*>{
+        if (!endDate.isNullOrEmpty()){
+            val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
+            course.endDate = sdf.parse(endDate)
+        }
         if (course.id != 0){
             if (courseService!!.updateCourse(course)) return Msg(0, "ok", null)
             else return Msg(-1, "更新失败", null)

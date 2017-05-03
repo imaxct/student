@@ -1,8 +1,8 @@
 package imaxct.domain
 
-import javax.persistence.*
 import java.io.Serializable
-import java.util.Date
+import java.util.*
+import javax.persistence.*
 
 @Entity
 @Table(name = "STU_course")
@@ -38,7 +38,7 @@ class Course : Serializable {
 
     var occupied = 0
 
-    @Column(length = 30)
+    @Column(length = 50)
     var gradeLimit: String? = null
 
     @Column(length = 100)
