@@ -7,43 +7,53 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
 <div class="row">
-<form class="form-inline">
-    <div class="form-group">
-        <label for="open">当前状态: ${opening eq '1' ? '开启' : '关闭'}</label>
-        <select id="open" class="form-control">
-            <option value="1">开启</option>
-            <option value="0">关闭</option>
-        </select>
-        <a href="#" class="btn btn-primary" id="sub_open">提交</a>
+    <div class="col-md-8">
+        <form class="form">
+            <div class="form-group">
+                <label for="open">当前状态: ${opening eq '1' ? '开启' : '关闭'}</label>
+                <select id="open" class="form-control">
+                    <option value="1">开启</option>
+                    <option value="0">关闭</option>
+                </select>
+                <a href="#" class="btn btn-primary" id="sub_open">提交</a>
+            </div>
+        </form>
+        <form class="form">
+            <div class="form-group">
+                <label for="dec">编辑公告</label>
+                <textarea class="form-control" id="dec" rows="10"></textarea>
+                <a href="#" class="btn btn-primary" id="sub_declare">提交</a>
+            </div>
+        </form>
     </div>
-</form>
-</div>
-<div class="row">
-<form class="form-inline">
-    <div class="form-group">
-        <label for="dec">编辑公告</label>
-        <textarea class="form-control" id="dec">${declare}</textarea>
-        <a href="#" class="btn btn-primary" id="sub_declare">提交</a>
-    </div>
-</form>
 </div>
 <script>
+    var edt = new wangEditor('dec');
+    edt.config.menus = [
+        'bold', 'underline',
+        'italic', 'strikethrough', 'eraser', 'forecolor', 'bgcolor',
+        '|', 'quote', 'fontfamily', 'fontsize', 'head', 'unorderlist',
+        'orderlist', 'alignleft', 'aligncenter', 'alignright',
+        '|', 'link', 'unlink', 'table', '|', 'undo', 'redo'
+    ];
+    edt.create();
+    edt.$txt.html('${declare}');
     $('#sub_open').click(function () {
         $.post('setting', {key: 'opening', value: $('#open').val()}, 'json')
             .done(function (res) {
-                if (res.code === 0){
+                if (res.code === 0) {
                     alert('更新成功, 刷新页面可查看.')
-                }else{
+                } else {
                     alert(res.msg)
                 }
             });
     });
     $('#sub_declare').click(function () {
-        $.post('setting', {key: 'declare', value: $('#dec').val()}, 'json')
+        $.post('setting', {key: 'declare', value: edt.$txt.html()}, 'json')
             .done(function (res) {
-                if (res.code === 0){
+                if (res.code === 0) {
                     alert('更新成功, 刷新页面可查看.')
-                }else{
+                } else {
                     alert(res.msg)
                 }
             });

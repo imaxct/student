@@ -15,6 +15,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.springframework.stereotype.Controller
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
@@ -178,6 +179,17 @@ class AdminController {
         val course = courseService!!.getCourseById(id) ?: return ModelAndView("A/msg", mapOf("msg" to "错误"))
         val list = adminService!!.getUserByCourse(course)
         mav.addObject("list", list)
+        return mav
+    }
+
+    @RequestMapping(value = "/editor")
+    fun editCourse(@RequestParam(required = false)id: String?): ModelAndView{
+        val mav = ModelAndView("A/courseEditor")
+        if (!id.isNullOrEmpty()){
+            val cid = Integer.parseInt(id)
+            val c = courseService!!.getCourseById(cid)
+            mav.addObject("course", c)
+        }
         return mav
     }
 }

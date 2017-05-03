@@ -31,7 +31,7 @@ open class UserServiceImpl : BaseService(), IUserService {
         if (course.restrict == -1 && user.poor){
             return Msg(-1, "仅非贫困生可报", null)
         }
-        if (course.gradeLimit != null && course.gradeLimit != user.grade){
+        if (course.gradeLimit != null && !course.gradeLimit!!.contains(user.grade!!)){
             return Msg(-1, "你所在的年级不能报名", null)
         }
         if (course.occupied >= course.capacity){

@@ -68,7 +68,7 @@
     var classId = -1;
     $('.popover_url').popover();
     function edit(id) {
-
+        $('#frame').load('/student/A/editor?id=' + id)
     }
     function myAlert(msg) {
         $('#alert-msg').html(msg);

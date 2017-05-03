@@ -17,6 +17,7 @@
     </title>
     <link href="/student/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/student/static/css/todc-bootstrap.min.css" rel="stylesheet">
+    <link href="/student/static/css/wangEditor.min.css" rel="stylesheet">
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -35,7 +36,7 @@
 </nav>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
             <ul class="list-group">
                 <li class="list-group-header">课程</li>
                 <li class="list-group-item"><a href="#" id="courses">课程信息</a></li>
@@ -44,7 +45,7 @@
                 <li class="list-group-item"><a href="#" id="setting">系统设置</a></li>
             </ul>
         </div>
-        <div class="col-md-9">
+        <div class="col-md-10">
             <div id="frame">
             </div>
         </div>
@@ -52,6 +53,7 @@
 </div>
 <script src="/student/static/js/jquery-3.2.1.min.js"></script>
 <script src="/student/static/js/bootstrap.min.js"></script>
+<script src="/student/static/js/wangEditor.min.js"></script>
 <script>
     $(document)
         .on('click', '#courses', function () {
@@ -66,7 +68,7 @@
             $(e).addClass('active');
         })
         .on('click', '#addCourse', function () {
-            $('#frame').load('/student/A/add')
+            $('#frame').load('/student/A/editor')
         })
         .on('click', '#setting', function () {
             $('#frame').load('/student/A/setting');
