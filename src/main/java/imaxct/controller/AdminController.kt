@@ -2,6 +2,7 @@ package imaxct.controller
 
 import imaxct.bean.Msg
 import imaxct.dao.ISettingDao
+import imaxct.domain.Course
 import imaxct.domain.Setting
 import imaxct.domain.User
 import imaxct.service.IAdminService
@@ -13,10 +14,7 @@ import org.apache.poi.ss.usermodel.Sheet
 import org.apache.poi.ss.usermodel.Workbook
 import org.apache.poi.ss.usermodel.WorkbookFactory
 import org.springframework.stereotype.Controller
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestMethod
-import org.springframework.web.bind.annotation.RequestParam
-import org.springframework.web.bind.annotation.ResponseBody
+import org.springframework.web.bind.annotation.*
 import org.springframework.web.multipart.MultipartFile
 import org.springframework.web.servlet.ModelAndView
 import java.io.File
@@ -191,5 +189,16 @@ class AdminController {
             mav.addObject("course", c)
         }
         return mav
+    }
+
+    @ResponseBody
+    @PostMapping(value = "/editor")
+    fun addOrEditCourse(course: Course): Msg<*>{
+        if (course.id != 0){
+            if (courseService!!.updateCourse(course)) return Msg(0, "ok", null)
+            else return Msg(-1, "更新失败", null)
+        }else{
+            return courseService!!.addCourse(course)
+        }
     }
 }

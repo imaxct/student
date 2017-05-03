@@ -18,4 +18,5 @@ interface ICourseService {
      */
     fun getAllCourses(id: Int): Msg<List<Course>>
 
+    fun updateCourse(course: Course): Boolean
 }

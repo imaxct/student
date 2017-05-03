@@ -60,11 +60,10 @@
         <label for="intro">课程介绍</label>
         <textarea id="intro" rows="10" name="description"></textarea>
     </div>
-    <a class="btn btn-primary form-control" href="#">提交</a>
+    <a id="sub" class="btn btn-primary form-control" href="#">提交</a>
 </form>
 </div>
 <script>
-
     <c:if test="${not empty course}">
     var name = '${course.name}',
         lo = '${course.location}',
@@ -73,6 +72,7 @@
         capacity = '${course.capacity}',
         gradeLimit = '${course.gradeLimit}',
         endDate = '${course.endDate}';
+    var id = ${course.id};
     $('#name').val(name);
     $('#loc').val(lo);
     $('#restrict').val(restrict);
@@ -82,4 +82,26 @@
     $('#endDate').val(endDate);
     $('#intro').val('${course.description}');
     </c:if>
+    $('#sub').click(function () {
+        var data = {
+            name: $('#name').val(),
+            location: $('#loc').val(),
+            restrict: $('#restrict').val(),
+            courseTime: $('#courseTime').val(),
+            capacity: $('#capacity').val(),
+            gradeLimit: $('#gradeLimit').val(),
+            endDate: $('#endDate').val(),
+            description: $('#intro').val()
+        };
+        if (id){
+            data.id = id;
+        }
+        $.post('editor', data , 'json')
+            .done(function (res) {
+                if (res.code === 0){
+                    alert('添加成功.');
+                    window.location.reload();
+                }else alert(res.msg);
+            });
+    });
 </script>
