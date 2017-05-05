@@ -79,7 +79,7 @@
     $('#courseTime').val(courseTime);
     $('#capacity').val(capacity);
     $('#gradeLimit').val(gradeLimit);
-    $('#endDate').val(endDate);
+    $('#endDate').val(endDate.replace(' ', 'T'));
     $('#intro').val('${course.description}');
     </c:if>
     var options = {
