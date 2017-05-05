@@ -40,7 +40,7 @@
             <div class="modal-body"><p>确认删除本课?</p></div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" id="chooseBtn" class="btn btn-primary">确认</button>
+                <button type="button" id="chooseBtn2" class="btn btn-primary">确认</button>
             </div>
         </div>
     </div>
@@ -73,11 +73,11 @@
         classId = -1;
     });
     $(document)
-        .on('click', '#chooseBtn', function () {
-            $('#chooseBtn').attr('disabled', 'disabled');
+        .on('click', '#chooseBtn2', function () {
+            $('#chooseBtn2').attr('disabled', 'disabled');
             $.post('/student/C/delete', {id: classId}, 'json')
                 .always(function () {
-                    $('#chooseBtn').removeAttr('disabled');
+                    $('#chooseBtn2').removeAttr('disabled');
                     $('#myModal').modal('hide');
                 })
                 .done(function (res) {

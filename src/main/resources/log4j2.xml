@@ -4,15 +4,15 @@
         <Console name="Console" target="SYSTEM_OUT">
             <PatternLayout pattern="%d{HH:mm:ss.SS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
-        <File name="File" fileName="logs/springTest.log" append="true">
+        <File name="File" fileName="logs/student.log" append="true">
             <PatternLayout pattern="%d{HH:mm:ss.SS} [%t] %-5level %logger{36} - %msg%n"/>
         </File>
     </Appenders>
     <Loggers>
-        <Logger name="org.springframework.beans.factory" level="WARN">
+        <Root level="WARN">
             <Appender-ref ref="File"/>
-        </Logger>
-        <Root level="trace">
+        </Root>
+        <Root level="INFO">
             <Appender-ref ref="Console"/>
         </Root>
     </Loggers>

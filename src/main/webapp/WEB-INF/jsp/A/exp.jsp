@@ -15,19 +15,6 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <meta name="ProgId" content="Excel.Sheet"/>
-    <meta name="Generator" content="WPS Office ET"/>
-    <!--[if gte mso 9]>
- <xml>
-  <o:DocumentProperties>
-   <o:Created>2017-05-04T00:46:02</o:Created>
-   <o:LastSaved>2017-05-04T00:46:19</o:LastSaved>
-  </o:DocumentProperties>
-  <o:CustomDocumentProperties>
-   <o:KSOProductBuildVer dt:dt="string">2052-10.1.0.5672</o:KSOProductBuildVer>
-  </o:CustomDocumentProperties>
- </xml>
-<![endif]-->
 </head>
 <body>
     <table border="1">
