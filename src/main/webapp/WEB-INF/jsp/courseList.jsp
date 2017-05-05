@@ -18,7 +18,7 @@
     <c:if test="${not empty list}">
     <c:forEach var="item" items="${list}">
     <tr>
-        <td>${item.id}</td><td>${item.name}</td><td>${item.gradeLimit}</td><td>${item.courseTime}</td>
+        <td>${item.id}</td><td>${item.name}</td><td>${empty item.gradeLimit ? '无' : item.gradeLimit}</td><td>${item.courseTime}</td>
         <td>${item.location}</td><td>${item.occupied}/${item.capacity}</td><td>${empty item.endDate ? '无' : item.endDate}</td>
         <td><a class="popover_url" href="#" data-container="body" data-toggle="popover"
                data-placement="bottom" title="详情 - 震惊,所有选课的人都看了!" data-content="${item.description}">详情,必看!</a></td>
