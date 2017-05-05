@@ -24,8 +24,8 @@
         </tr>
         <c:forEach var="x" items="${list}">
             <tr>
-                <td>${x.id.user.name}</td><td>${x.id.user.sex}</td><td x:str>${x.id.user.idNo}</td><td x:str>${x.id.user.stuNo}</td>
-                <td>${x.id.user.grade}</td><td>${x.id.user.campus}</td><td x:str>${x.id.user.phone}</td><td x:str>${x.id.user.qq}</td>
+                <td>${x.id.user.name}</td><td>${x.id.user.sex}</td><td>${'\''}${x.id.user.idNo}</td><td>${'\''}${x.id.user.stuNo}</td>
+                <td>${x.id.user.grade}</td><td>${x.id.user.campus}</td><td>${'\''}${x.id.user.phone}</td><td>${'\''}${x.id.user.qq}</td>
                 <td>${x.id.user.email}</td>
             </tr>
         </c:forEach>
