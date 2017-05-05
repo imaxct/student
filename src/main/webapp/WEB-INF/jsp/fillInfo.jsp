@@ -33,7 +33,7 @@
                 <label for="idCard">身份证<span class="text-muted">*</span></label>
                 <c:choose>
                     <c:when test="${empty USER.idNo}">
-                        <input type="number" name="idNo" id="idCard" class="form-control">
+                        <input type="text" name="idNo" id="idCard" class="form-control">
                     </c:when>
                     <c:otherwise>
                         <input type="number" id="idCard" value="${USER.idNo}" readonly class="form-control">
