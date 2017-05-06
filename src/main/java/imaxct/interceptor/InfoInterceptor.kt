@@ -21,7 +21,7 @@ class InfoInterceptor : HandlerInterceptor {
         val user: User = request!!.session.getAttribute("user") as User
         val flag: Boolean = user.campus.isNullOrBlank() || user.grade.isNullOrBlank()
                 || user.idNo.isNullOrBlank() || user.name.isNullOrBlank()
-                || user.sex.isNullOrBlank() || user.stuNo.isNullOrBlank()
+                || user.sex.isNullOrBlank() || user.stuNo.isNullOrBlank() || user.phone.isNullOrBlank()
 
         if (flag) {
             request.setAttribute("USER", user)
