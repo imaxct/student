@@ -16,11 +16,9 @@ import java.io.IOException
  */
 object Util {
 
-    fun readHeadFromExcel(){
-        //val x
-
-    }
-
+    /**
+     * 通过教务系统验证并获取用户信息
+     * */
     fun verify(username: String, password: String): Msg<User> {
         try {
             var response: Connection.Response = Jsoup.connect("http://bkjws.sdu.edu.cn/b/ajaxLogin")

@@ -21,6 +21,9 @@ open class UserServiceImpl : BaseService(), IUserService {
     override fun updateInfo(user: User): Msg<*> =
             if (this.userDao!!.updateUser(user)) Msg(0, "", null) else Msg<Int>("更新失败.")
 
+    /**
+     * 选课
+     * */
     override fun selectCourse(course: Course, user: User): Msg<*> {
         if (course.endDate != null && course.endDate!!.before(Date())){
             return Msg(-1, "课程已截止报名", null)
