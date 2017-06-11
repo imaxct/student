@@ -25,7 +25,8 @@ class InfoInterceptor : HandlerInterceptor {
 
         if (flag) {
             request.setAttribute("USER", user)
-            response!!.sendRedirect("/student/User/fillInfo")
+            //response!!.sendRedirect("/student/User/fillInfo")
+            request.getRequestDispatcher("/User/fillInfo").forward(request, response)
             return false
         }else {
             return true
