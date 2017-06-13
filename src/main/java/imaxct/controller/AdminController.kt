@@ -200,6 +200,10 @@ class AdminController {
             course.endDate = sdf.parse(endDate)
         }
         if (course.id != 0){
+            val oCourse = courseService!!.getCourseById(course.id)
+            if (oCourse != null && oCourse.occupied > 0) {
+                course.occupied = oCourse.occupied
+            }
             if (courseService!!.updateCourse(course)) return Msg(0, "ok", null)
             else return Msg(-1, "更新失败", null)
         }else{

@@ -49,14 +49,13 @@ object Util {
                         val idNo = obj.getString("sfzh")
                         val sex = obj.getString("xb")
                         val grade = obj.getString("ssnj")
-                        val phone = obj.getString("lxdh")
                         val user = User()
                         user.name = name
                         user.stuNo = stuNo
                         user.sex = sex
                         user.idNo = idNo
                         user.grade = grade
-                        user.phone = phone
+                        user.phone = null
                         return Msg(0, user)
                     }
                 }

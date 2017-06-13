@@ -36,7 +36,7 @@
                         <input type="text" name="idNo" id="idCard" class="form-control">
                     </c:when>
                     <c:otherwise>
-                        <input type="number" id="idCard" value="${USER.idNo}" readonly class="form-control">
+                        <input type="text" id="idCard" value="${USER.idNo}" readonly class="form-control">
                     </c:otherwise>
                 </c:choose>
             </div>
