@@ -26,9 +26,7 @@ class UserController {
 
 
     @RequestMapping(value = "/main")
-    fun main(): String {
-        return "main"
-    }
+    fun main(): String = "main"
 
     @RequestMapping(value = "/fillInfo", method = arrayOf(RequestMethod.GET))
     fun infoFront(session: HttpSession): ModelAndView {
@@ -40,7 +38,7 @@ class UserController {
     }
 
     @RequestMapping(value = "/logout")
-    fun logout(session: HttpSession): String{
+    fun logout(session: HttpSession): String {
         session.invalidate()
         return "redirect:/"
     }
@@ -48,7 +46,7 @@ class UserController {
     @ResponseBody
     @RequestMapping(value = "/fillInfo", method = arrayOf(RequestMethod.POST))
     fun fillInfo(u: User, session: HttpSession): Msg<*> {
-        val user : User = session.getAttribute("user") as User
+        val user: User = session.getAttribute("user") as User
         if (u.campus != null) user.campus = u.campus
         if (u.phone != null) user.phone = u.phone
         if (u.qq != null) user.qq = u.qq
@@ -75,7 +73,7 @@ class UserController {
     }
 
     @RequestMapping(value = "/G")
-    fun getDeclare(): ModelAndView{
+    fun getDeclare(): ModelAndView {
         val mav = ModelAndView("declare")
         val d = settingDao!!.getSettingByName(AppConst.SETTING_DECLARE)
         mav.addObject("msg", d?.value ?: "暂无公告")

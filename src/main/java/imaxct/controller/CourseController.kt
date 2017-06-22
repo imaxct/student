@@ -34,7 +34,7 @@ class CourseController {
     }
 
     @RequestMapping(value = "/chosen")
-    fun listChosen(session: HttpSession): ModelAndView{
+    fun listChosen(session: HttpSession): ModelAndView {
         val mav = ModelAndView("myCourses")
         val u: User = session.getAttribute("user") as User
         val list = userService!!.getCourseByUser(u)
@@ -44,7 +44,7 @@ class CourseController {
 
     @ResponseBody
     @RequestMapping(value = "/choose", method = arrayOf(RequestMethod.POST))
-    fun chooseCourse(id: Int, session: HttpSession): Msg<*>{
+    fun chooseCourse(id: Int, session: HttpSession): Msg<*> {
         val course: Course = courseService!!.getCourseById(id) ?: return Msg(-1, "课程不存在", null)
         val user: User = session.getAttribute("user") as User
         return userService!!.selectCourse(course, user)
@@ -52,7 +52,7 @@ class CourseController {
 
     @ResponseBody
     @RequestMapping(value = "/delete", method = arrayOf(RequestMethod.POST))
-    fun unChooseCourse(id: Int, session: HttpSession): Msg<*>{
+    fun unChooseCourse(id: Int, session: HttpSession): Msg<*> {
         val course: Course = courseService!!.getCourseById(id) ?: return Msg(-1, "课程不存在", null)
         val user: User = session.getAttribute("user") as User
         return userService!!.deSelectCourse(course, user)

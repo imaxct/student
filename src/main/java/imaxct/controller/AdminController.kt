@@ -43,15 +43,13 @@ class AdminController {
     var courseService: ICourseService? = null
 
     @RequestMapping(value = "/main")
-    fun main(): String{
-        return "A/main"
-    }
+    fun main(): String = "A/main"
 
     @RequestMapping(value = "/login", method = arrayOf(RequestMethod.POST))
-    fun login(u: String, p: String, session: HttpSession): ModelAndView{
+    fun login(u: String, p: String, session: HttpSession): ModelAndView {
         val mav = ModelAndView("A/msg")
         val admin = adminService!!.login(u, p)
-        if (admin != null){
+        if (admin != null) {
             mav.viewName = "redirect:main"
             session.setAttribute("admin", admin)
             mav.addObject("admin", admin)
@@ -62,21 +60,19 @@ class AdminController {
     }
 
     @RequestMapping(value = "/logout")
-    fun logout(req: HttpServletRequest): String{
+    fun logout(req: HttpServletRequest): String {
         req.getSession(false)?.invalidate()
         return "redirect:/admin.jsp"
     }
 
     @RequestMapping(value = "/upload")
-    fun uploadFront(): String{
-        return "A/upload"
-    }
+    fun uploadFront(): String = "A/upload"
 
     @ResponseBody
     @RequestMapping(value = "/upload", method = arrayOf(RequestMethod.POST))
     fun upload(file: MultipartFile, session: HttpSession): Map<String, JSONArray> {
         val dir: File = File("upload")
-        if (!dir.exists()){
+        if (!dir.exists()) {
             dir.mkdir()
         }
         val arr: JSONArray = JSONArray()
@@ -94,7 +90,7 @@ class AdminController {
     }
 
     @RequestMapping(value = "/selectHead")
-    fun selectHead(session: HttpSession): ModelAndView{
+    fun selectHead(session: HttpSession): ModelAndView {
         val fileName: String = session.getAttribute(AppConst.FILE_TOKEN) as String?
                 ?: return ModelAndView("A/msg", mapOf("msg" to "未发现上传文件"))
         val file: File = File(fileName)
@@ -105,7 +101,7 @@ class AdminController {
         val st = row.firstCellNum
         val ed = row.lastCellNum
         val map = hashMapOf<Int, String>()
-        for (x in st until ed){
+        for (x in st until ed) {
             map[x] = row.getCell(x).toString()
         }
         mav.addObject("list", map)
@@ -115,7 +111,7 @@ class AdminController {
     @ResponseBody
     @RequestMapping(value = "/doIn", method = arrayOf(RequestMethod.POST))
     fun doImport(stuNo: Int, idNo: Int, sex: Int, grade: Int, name: Int,
-            session: HttpSession): Callable<Msg<*>>{
+                 session: HttpSession): Callable<Msg<*>> {
         return Callable({
             val fileName = session.getAttribute(AppConst.FILE_TOKEN) as String
             session.removeAttribute(AppConst.FILE_TOKEN)
@@ -129,7 +125,7 @@ class AdminController {
             val list: MutableList<User> = mutableListOf()
             val startNum = sheet.firstRowNum + 1
             val endNum = sheet.lastRowNum
-            for (x in startNum until endNum){
+            for (x in startNum until endNum) {
                 val row = sheet.getRow(x)
                 val stn: String? = row.getCell(stuNo).stringCellValue
                 val idn: String? = row.getCell(idNo).stringCellValue
@@ -148,7 +144,7 @@ class AdminController {
     }
 
     @RequestMapping(value = "/list")
-    fun getCourseList(session: HttpSession): ModelAndView{
+    fun getCourseList(session: HttpSession): ModelAndView {
         val list = adminService!!.getCourses()
         val mav = ModelAndView("A/courseList")
         mav.addObject("list", list)
@@ -156,7 +152,7 @@ class AdminController {
     }
 
     @RequestMapping(value = "/setting")
-    fun setting(): ModelAndView{
+    fun setting(): ModelAndView {
         val mav = ModelAndView("A/setting")
         val list = settingDao!!.listSetting()
         for (l in list) mav.addObject(l.key, l.value)
@@ -165,7 +161,7 @@ class AdminController {
 
     @ResponseBody
     @RequestMapping(value = "/setting", method = arrayOf(RequestMethod.POST))
-    fun updateSetting(key: String, value: String): Msg<*>{
+    fun updateSetting(key: String, value: String): Msg<*> {
         val s = Setting(key, value)
         if (settingDao!!.createOrUpdate(s))
             return Msg(0, "ok", null)
@@ -173,7 +169,7 @@ class AdminController {
     }
 
     @RequestMapping(value = "/exp")
-    fun export(id: Int): ModelAndView{
+    fun export(id: Int): ModelAndView {
         val mav = ModelAndView("A/exp")
         val course = courseService!!.getCourseById(id) ?: return ModelAndView("A/msg", mapOf("msg" to "错误"))
         val list = adminService!!.getUserByCourse(course)
@@ -182,9 +178,9 @@ class AdminController {
     }
 
     @RequestMapping(value = "/editor")
-    fun editCourse(@RequestParam(required = false)id: String?): ModelAndView{
+    fun editCourse(@RequestParam(required = false) id: String?): ModelAndView {
         val mav = ModelAndView("A/courseEditor")
-        if (!id.isNullOrEmpty()){
+        if (!id.isNullOrEmpty()) {
             val cid = Integer.parseInt(id)
             val c = courseService!!.getCourseById(cid)
             mav.addObject("course", c)
@@ -194,19 +190,19 @@ class AdminController {
 
     @ResponseBody
     @PostMapping(value = "/editor")
-    fun addOrEditCourse(endDate: String?, course: Course): Msg<*>{
-        if (!endDate.isNullOrEmpty()){
+    fun addOrEditCourse(endDate: String?, course: Course): Msg<*> {
+        if (!endDate.isNullOrEmpty()) {
             val sdf = SimpleDateFormat("yyyy/MM/dd HH:mm:ss")
             course.endDate = sdf.parse(endDate)
         }
-        if (course.id != 0){
+        if (course.id != 0) {
             val oCourse = courseService!!.getCourseById(course.id)
             if (oCourse != null && oCourse.occupied > 0) {
                 course.occupied = oCourse.occupied
             }
             if (courseService!!.updateCourse(course)) return Msg(0, "ok", null)
             else return Msg(-1, "更新失败", null)
-        }else{
+        } else {
             return courseService!!.addCourse(course)
         }
     }
