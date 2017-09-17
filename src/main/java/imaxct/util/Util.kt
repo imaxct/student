@@ -3,11 +3,10 @@ package imaxct.util
 import imaxct.bean.Msg
 import imaxct.domain.User
 import net.sf.json.JSONObject
-import org.apache.poi.xssf.binary.XSSFBUtils
 import org.jsoup.Connection
 import org.jsoup.Jsoup
+import org.springframework.util.DigestUtils
 import org.springframework.util.StringUtils
-
 import java.io.IOException
 
 /**
@@ -23,7 +22,7 @@ object Util {
         try {
             var response: Connection.Response = Jsoup.connect("http://bkjws.sdu.edu.cn/b/ajaxLogin")
                     .data("j_username", username)
-                    .data("j_password", password)
+                    .data("j_password", DigestUtils.md5DigestAsHex(password.toByteArray()))
                     .cookie("j_username", username)
                     .cookie("j_password", password)
                     .method(Connection.Method.POST)
