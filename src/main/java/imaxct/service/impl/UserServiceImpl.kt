@@ -29,10 +29,10 @@ open class UserServiceImpl : BaseService(), IUserService {
             return Msg(-1, "课程已截止报名", null)
         }
         if (course.restrict == 1 && !user.poor){
-            return Msg(-1, "非贫困生, 不能报名", null)
+            return Msg(-1, "非困难生, 不能报名", null)
         }
         if (course.restrict == -1 && user.poor){
-            return Msg(-1, "仅非贫困生可报", null)
+            return Msg(-1, "仅非困难生可报", null)
         }
         if (!course.gradeLimit.isNullOrBlank() && !course.gradeLimit!!.contains(user.grade!!)){
             return Msg(-1, "你所在的年级不能报名", null)

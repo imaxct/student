@@ -183,6 +183,7 @@ class AdminController {
         if (!id.isNullOrEmpty()) {
             val cid = Integer.parseInt(id)
             val c = courseService!!.getCourseById(cid)
+            c?.description = c?.description?.replace("\n", "\\\n")
             mav.addObject("course", c)
         }
         return mav

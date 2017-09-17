@@ -23,8 +23,8 @@
         <td>${empty item.gradeLimit? '无' : item.gradeLimit}</td>
         <td><c:choose>
             <c:when test="${empty item.restrict}">无</c:when>
-            <c:when test="${item.restrict eq '1'}">仅限贫困生</c:when>
-            <c:when test="${item.restrict eq '-1'}">仅限非贫困生</c:when>
+            <c:when test="${item.restrict eq '1'}">仅限困难生</c:when>
+            <c:when test="${item.restrict eq '-1'}">仅限非困难生</c:when>
             <c:otherwise>无</c:otherwise>
         </c:choose></td>
         <td><a class="popover_url" href="#" data-container="body" data-toggle="popover"

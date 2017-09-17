@@ -32,8 +32,8 @@
         <label for="restrict">学生身份限制</label>
         <select name="restrict" id="restrict" class="form-control">
             <option value="0">无限制</option>
-            <option value="1">仅贫困生</option>
-            <option value="-1">仅非贫困生</option>
+            <option value="1">仅困难生</option>
+            <option value="-1">仅非困难生</option>
         </select>
     </div>
     <div class="form-group">
@@ -80,7 +80,7 @@
     $('#capacity').val(capacity);
     $('#gradeLimit').val(gradeLimit);
     $('#endDate').val(endDate.replace(' ', 'T'));
-    $('#intro').val('${course.description}');
+    $('#intro').val("${course.description}");
     </c:if>
     var options = {
         year: 'numeric', month: '2-digit', day: '2-digit',
