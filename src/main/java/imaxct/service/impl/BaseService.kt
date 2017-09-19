@@ -10,14 +10,14 @@ import javax.annotation.Resource
 open class BaseService {
 
     @Resource
-    protected var courseDao: ICourseDao? = null
+    protected lateinit var courseDao: ICourseDao
 
     @Resource
-    protected var userDao: IUserDao? = null
+    protected lateinit var userDao: IUserDao
 
     @Resource
-    protected var selectionDao: ISelectionDao? = null
+    protected lateinit var selectionDao: ISelectionDao
 
     @Resource
-    protected var adminDao: IAdminDao? = null
+    protected lateinit var adminDao: IAdminDao
 }

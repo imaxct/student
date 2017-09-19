@@ -14,42 +14,42 @@ import java.util.*
 @Service
 @Transactional
 open class UserServiceImpl : BaseService(), IUserService {
-    override fun getCourseByUser(user: User): List<Selection> = this.selectionDao!!.getSelectionByUser(user)
+    override fun getCourseByUser(user: User): List<Selection> = this.selectionDao.getSelectionByUser(user)
 
-    override fun getUserById(id: Int): User = this.userDao!!.getUserById(id)
+    override fun getUserById(id: Int): User = this.userDao.getUserById(id)
 
     override fun updateInfo(user: User): Msg<*> =
-            if (this.userDao!!.updateUser(user)) Msg(0, "", null) else Msg<Int>("更新失败.")
+        if (this.userDao.updateUser(user)) Msg(0, "", null) else Msg<Int>("更新失败.")
 
     /**
      * 选课
      * */
     override fun selectCourse(course: Course, user: User): Msg<*> {
-        if (course.endDate != null && course.endDate!!.before(Date())){
+        if (course.endDate != null && course.endDate!!.before(Date())) {
             return Msg(-1, "课程已截止报名", null)
         }
-        if (course.restrict == 1 && !user.poor){
+        if (course.restrict == 1 && !user.poor) {
             return Msg(-1, "非困难生, 不能报名", null)
         }
-        if (course.restrict == -1 && user.poor){
+        if (course.restrict == -1 && user.poor) {
             return Msg(-1, "仅非困难生可报", null)
         }
-        if (!course.gradeLimit.isNullOrBlank() && !course.gradeLimit!!.contains(user.grade!!)){
+        if (!course.gradeLimit.isNullOrBlank() && !course.gradeLimit!!.contains(user.grade!!)) {
             return Msg(-1, "你所在的年级不能报名", null)
         }
-        if (course.occupied >= course.capacity){
+        if (course.occupied >= course.capacity) {
             return Msg(-1, "报名人数已满", null)
         }
-        val sid: SelectPK = SelectPK(user, course)
-        if (selectionDao!!.getSelectionById(sid) != null){
+        val sid = SelectPK(user, course)
+        if (selectionDao.getSelectionById(sid) != null) {
             return Msg(-1, "已经选过这门课了", null)
         }
         course.occupied = course.occupied + 1
-        val s: Selection = Selection(sid)
-        if (courseDao!!.updateCourse(course) && selectionDao!!.createSelection(s)){
-            return Msg(0, "选课成功", null)
-        }else {
-            return Msg(-1, "系统忙, 稍后再试", null)
+        val s = Selection(sid)
+        return if (courseDao.updateCourse(course) && selectionDao.createSelection(s)) {
+            Msg(0, "选课成功", null)
+        } else {
+            Msg(-1, "系统忙, 稍后再试", null)
         }
     }
 
@@ -58,34 +58,33 @@ open class UserServiceImpl : BaseService(), IUserService {
      * */
     override fun deSelectCourse(course: Course, user: User): Msg<*> {
         val sid = SelectPK(user, course)
-        val s = selectionDao!!.getSelectionById(sid) ?: return Msg(-1, "删除失败", null)
+        val s = selectionDao.getSelectionById(sid) ?: return Msg(-1, "删除失败", null)
         course.occupied = course.occupied - 1
-        if (courseDao!!.updateCourse(course) && selectionDao!!.deleteSelection(s)){
-            return Msg(0, "退课成功", null)
-        }else{
-            return Msg(-1, "操作失败", null)
+        return if (courseDao.updateCourse(course) && selectionDao.deleteSelection(s)) {
+            Msg(0, "退课成功", null)
+        } else {
+            Msg(-1, "操作失败", null)
         }
     }
 
     override fun login(stuNo: String, password: String): Msg<User> {
-        val user: User? = this.userDao!!.getUserByStuNo(stuNo)
-        if (user == null) {
-            val msg = Util.verify(stuNo, password)
-            if (msg.code == 0) {
-                val nUser = msg.obj
-                if (this.userDao!!.createUser(nUser!!)) {
-                    return Msg(0, nUser)
+        val user: User? = this.userDao.getUserByStuNo(stuNo)
+        when {
+            user == null -> {
+                val msg = Util.verify(stuNo, password)
+                return if (msg.code == 0) {
+                    val nUser = msg.obj
+                    if (this.userDao.createUser(nUser!!)) {
+                        Msg(0, nUser)
+                    } else {
+                        Msg("非首次登录, 请使用身份证号.")
+                    }
                 } else {
-                    return Msg("非首次登录, 请使用身份证号.")
+                    Msg("登录失败.")
                 }
-            } else {
-                return Msg("登录失败.")
             }
-        } else if (user.idNo == password) {
-            return Msg(0, user)
-        }
-        else {
-            return Msg("密码错误")
+            user.idNo.equals(password, true) -> return Msg(0, user)
+            else -> return Msg("密码错误")
         }
     }
 

@@ -59,7 +59,6 @@ class UserController {
     @RequestMapping(value = "/login", method = arrayOf(RequestMethod.POST))
     fun login(username: String, password: String, httpSession: HttpSession): ModelAndView {
         val msg = userService!!.login(username, password)
-        println(msg)
         val modelAndView: ModelAndView
         if (msg.code != 0 && msg.code != 1) {
             modelAndView = ModelAndView("msg")
