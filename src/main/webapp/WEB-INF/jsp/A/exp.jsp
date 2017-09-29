@@ -20,13 +20,13 @@
     <table border="1">
         <tr>
             <th>姓名</th><th>性别</th><th>身份证</th><th>学号</th><th>年级</th><th>校区</th><th>手机</th>
-            <th>QQ</th><th>email</th>
+            <th>QQ</th><th>email</th><th>学院</th>
         </tr>
         <c:forEach var="x" items="${list}">
             <tr>
                 <td>${x.id.user.name}</td><td>${x.id.user.sex}</td><td>${'\''}${x.id.user.idNo}</td><td>${'\''}${x.id.user.stuNo}</td>
                 <td>${x.id.user.grade}</td><td>${x.id.user.campus}</td><td>${'\''}${x.id.user.phone}</td><td>${'\''}${x.id.user.qq}</td>
-                <td>${x.id.user.email}</td>
+                <td>${x.id.user.email}</td><td>${x.id.user.college}</td>
             </tr>
         </c:forEach>
     </table>

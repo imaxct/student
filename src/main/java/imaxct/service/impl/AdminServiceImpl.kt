@@ -16,17 +16,17 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 @Transactional
 open class AdminServiceImpl: BaseService(), IAdminService {
-    override fun getUserByCourse(course: Course): List<Selection> = this.selectionDao!!.getSelectionByCourse(course)
+    override fun getUserByCourse(course: Course): List<Selection> = this.selectionDao.getSelectionByCourse(course)
 
-    override fun getCourses(): List<Course> = this.courseDao!!.allCourses()
+    override fun getCourses(): List<Course> = this.courseDao.allCourses()
 
     override fun clearAllRecord(): Msg<*> {
-        val s = this.selectionDao!!.clearAllSelection()
-        val u = this.userDao!!.clearAllUser()
+        val s = this.selectionDao.clearAllSelection()
+        val u = this.userDao.clearAllUser()
         return Msg(0, "删除了 $s 条选课数据, $u 条用户数据.", null)
     }
 
-    override fun addUsers(list: MutableList<User>): Boolean = this.userDao!!.addUsers(list)
+    override fun addUsers(list: MutableList<User>): Boolean = this.userDao.addUsers(list)
 
-    override fun login(u: String, p: String): Admin? = this.adminDao!!.getAdminByUP(u, p)
+    override fun login(u: String, p: String): Admin? = this.adminDao.getAdminByUP(u, p)
 }

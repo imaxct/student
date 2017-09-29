@@ -11,7 +11,7 @@ class User : Serializable {
 
     constructor(stuNo: String? = null, sex: String? = null, name: String? = null, idNo: String? = null,
                 grade: String? = null, campus: String? = null, phone: String? = null, qq: String? = null,
-                email: String? = null, poor: Boolean = false) {
+                email: String? = null, poor: Boolean = false, college: String? = null) {
         this.stuNo = stuNo
         this.sex = sex
         this.name = name
@@ -22,6 +22,7 @@ class User : Serializable {
         this.qq = qq
         this.email = email
         this.poor = poor
+        this.college = college
     }
 
 
@@ -57,4 +58,6 @@ class User : Serializable {
     var email: String? = null
 
     var poor: Boolean = false
+
+    var college: String? = null
 }

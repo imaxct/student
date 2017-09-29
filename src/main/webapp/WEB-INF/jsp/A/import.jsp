@@ -21,6 +21,10 @@
         <label for="grade">年级</label>
         <select id="grade" name="grade" class="form-control"></select>
     </div>
+    <div class="form-group">
+        <label for="grade">学院</label>
+        <select id="college" name="college" class="form-control"></select>
+    </div>
     <button class="btn btn-primary" id="submit">开始导入</button>
 </form>
 <div id="progress" class="progress" style="display: none;">

@@ -93,7 +93,7 @@ class AdminController {
     fun selectHead(session: HttpSession): ModelAndView {
         val fileName: String = session.getAttribute(AppConst.FILE_TOKEN) as String?
                 ?: return ModelAndView("A/msg", mapOf("msg" to "未发现上传文件"))
-        val file: File = File(fileName)
+        val file = File(fileName)
         val mav = ModelAndView("A/import")
         val w: Workbook = WorkbookFactory.create(file)
         val sheet = w.getSheetAt(0)
@@ -110,14 +110,14 @@ class AdminController {
 
     @ResponseBody
     @RequestMapping(value = "/doIn", method = arrayOf(RequestMethod.POST))
-    fun doImport(stuNo: Int, idNo: Int, sex: Int, grade: Int, name: Int,
+    fun doImport(stuNo: Int, idNo: Int, sex: Int, grade: Int, name: Int, college: Int,
                  session: HttpSession): Callable<Msg<*>> {
         return Callable({
             val fileName = session.getAttribute(AppConst.FILE_TOKEN) as String
             session.removeAttribute(AppConst.FILE_TOKEN)
             if (fileName.isNullOrEmpty())
                 Msg(-1, "未找到文件", null)
-            val f: File = File(fileName)
+            val f = File(fileName)
             if (!f.exists() || f.canRead())
                 Msg(-1, "文件不存在或无法读取", null)
             val workbook: Workbook = WorkbookFactory.create(f)
@@ -127,12 +127,13 @@ class AdminController {
             val endNum = sheet.lastRowNum
             for (x in startNum until endNum) {
                 val row = sheet.getRow(x)
-                val stn: String? = row.getCell(stuNo).stringCellValue
-                val idn: String? = row.getCell(idNo).stringCellValue
-                val se: String? = row.getCell(sex).stringCellValue
-                val grd: String? = row.getCell(grade).stringCellValue
-                val nm: String? = row.getCell(name).stringCellValue
-                val u: User = User(stuNo = stn, idNo = idn, sex = se, grade = grd, name = nm, poor = true)
+                val stn = row.getCell(stuNo).stringCellValue
+                val idn = row.getCell(idNo).stringCellValue
+                val se = row.getCell(sex).stringCellValue
+                val grd = row.getCell(grade).stringCellValue
+                val nm = row.getCell(name).stringCellValue
+                val col = row.getCell(college).stringCellValue
+                val u = User(stuNo = stn, idNo = idn, sex = se, grade = grd, name = nm, poor = true, college = col)
                 list.add(u)
             }
             val msg = adminService!!.clearAllRecord()

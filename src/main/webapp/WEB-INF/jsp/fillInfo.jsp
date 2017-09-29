@@ -101,7 +101,7 @@
                 </c:choose>
             </div>
             <div class="form-group">
-                <label for="qqNumber">QQ</label>
+                <label for="qqNumber">QQ<span class="text-muted">*</span></label>
                 <c:choose>
                     <c:when test="${empty USER.qq}">
                         <input type="tel" name="qq" id="qqNumber" class="form-control">

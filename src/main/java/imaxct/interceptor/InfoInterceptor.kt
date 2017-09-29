@@ -20,16 +20,17 @@ class InfoInterceptor : HandlerInterceptor {
 
         val user: User = request!!.session.getAttribute("user") as User
         val flag: Boolean = user.campus.isNullOrBlank() || user.grade.isNullOrBlank()
-                || user.idNo.isNullOrBlank() || user.name.isNullOrBlank()
-                || user.sex.isNullOrBlank() || user.stuNo.isNullOrBlank() || user.phone.isNullOrBlank()
+            || user.idNo.isNullOrBlank() || user.name.isNullOrBlank()
+            || user.sex.isNullOrBlank() || user.stuNo.isNullOrBlank() || user.phone.isNullOrBlank()
+            || user.qq.isNullOrBlank()
 
-        if (flag) {
+        return if (flag) {
             request.setAttribute("USER", user)
             //response!!.sendRedirect("/student/User/fillInfo")
             request.getRequestDispatcher("/User/fillInfo").forward(request, response)
-            return false
-        }else {
-            return true
+            false
+        } else {
+            true
         }
     }
 
