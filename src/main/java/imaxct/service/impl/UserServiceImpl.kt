@@ -88,5 +88,5 @@ open class UserServiceImpl : BaseService(), IUserService {
         }
     }
 
-    override fun list(): Msg<List<User>> = Msg(0, "ok", this.userDao!!.getAllUsers())
+    override fun list(): Msg<List<User>> = Msg(0, "ok", this.userDao.getAllUsers())
 }
