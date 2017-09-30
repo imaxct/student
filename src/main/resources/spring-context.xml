@@ -27,7 +27,7 @@
         <property name="poolName" value="springHikariCP"/>
         <property name="connectionTestQuery" value="SELECT 1"/>
         <property name="dataSourceClassName" value="${hibernate.hikari.dataSourceClassName}"/>
-        <property name="maximumPoolSize" value="${hibernate.hikari.maxmunPoolSize}"/>
+        <property name="maximumPoolSize" value="${hibernate.hikari.maximumPoolSize}"/>
         <property name="idleTimeout" value="${hibernate.hikari.idleTimeout}"/>
         <property name="dataSourceProperties">
             <props>
