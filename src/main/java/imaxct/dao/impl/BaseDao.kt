@@ -13,56 +13,56 @@ open class BaseDao<T> {
     @Resource(name = "sessionFactory")
     private val sessionFactory: SessionFactory? = null
 
-    protected fun currentSession(): Session = sessionFactory!!.currentSession
+    private fun currentSession(): Session = sessionFactory!!.currentSession
 
     fun create(t: T): Boolean {
         val session = currentSession()
-        try {
+        return try {
             session.persist(t)
-            return true
+            true
         } catch (e: Exception) {
             session.transaction.rollback()
             logger.error("create", e)
-            return false
+            false
         }
 
     }
 
     fun delete(t: T): Boolean {
         val session = currentSession()
-        try {
+        return try {
             session.delete(t)
-            return true
+            true
         } catch (e: Exception) {
             session.transaction.rollback()
             logger.error("delete", e)
-            return false
+            false
         }
 
     }
 
     fun update(t: T): Boolean {
         val session = currentSession()
-        try {
+        return try {
             session.update(t)
-            return true
+            true
         } catch (e: Exception) {
             session.transaction.rollback()
             logger.error("update", e)
-            return false
+            false
         }
 
     }
 
     fun saveOrUpdate(t: T): Boolean {
         val session = currentSession()
-        try {
+        return try {
             session.saveOrUpdate(t)
-            return true
+            true
         } catch (e: Exception) {
             session.transaction.rollback()
             logger.error("saveOrUpdate", e)
-            return false
+            false
         }
 
     }
