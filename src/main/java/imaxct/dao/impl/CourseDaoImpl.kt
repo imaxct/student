@@ -15,12 +15,12 @@ class CourseDaoImpl : BaseDao<Course>(), ICourseDao {
     override fun updateCourse(course: Course): Boolean = this.update(course)
 
     override fun getAllCourses(): List<Course> {
-        return this.listPage(0, 50,
+        return this.listPage(0, 80,
                 "from Course where endDate > NOW() or endDate is null order by id desc")
     }
 
     override fun getCourseFromId(id: Int): List<Course> {
-        return this.listPage(0, 50,
+        return this.listPage(0, 80,
                 "from Course where (endDate > NOW() or endDate is null) and id<? order by id desc", id)
     }
 

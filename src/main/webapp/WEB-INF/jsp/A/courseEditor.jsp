@@ -71,7 +71,8 @@
         courseTime = '${course.courseTime}',
         capacity = '${course.capacity}',
         gradeLimit = '${course.gradeLimit}',
-        endDate = '${course.endDate}';
+        endDate = '${course.endDate}',
+        desc = '${course.description}';
     var id = ${course.id};
     $('#name').val(name);
     $('#loc').val(lo);
@@ -80,7 +81,7 @@
     $('#capacity').val(capacity);
     $('#gradeLimit').val(gradeLimit);
     $('#endDate').val(endDate.replace(' ', 'T'));
-    $('#intro').val("${course.description}");
+    $('#intro').val(desc);
     </c:if>
     var options = {
         year: 'numeric', month: '2-digit', day: '2-digit',
